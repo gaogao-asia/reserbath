@@ -3,7 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+/**
+ * 予約を管理するclass
+ * Class Reservations
+ * @package App
+ */
 class Reservations extends Model
 {
     /**
@@ -16,6 +20,10 @@ class Reservations extends Model
     ];
 
     // Relations
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
       return $this->belongsTo(\App\User::class, 'user_id', 'id');

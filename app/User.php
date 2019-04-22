@@ -38,6 +38,10 @@ class User extends Authenticatable
     ];
 
     // Relations
+    /**
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
     public function reservations()
     {
       return $this->hasMany(\App\User::class, 'user_id', 'id');
