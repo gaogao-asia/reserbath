@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'reserbath_dev'
+    volumes:
+      - ./docker/mysql/tmp/mysql:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - "3306:3306"
+  redis:
+    build:
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    environment:
+      DB_HOST: $DB_HOST
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/usr/src/reserbath-web
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - /usr/src/reserbath-web/vendor
+    depends_on:
+      - mysql
+      - redis
+      - nodejs
+      - mailhog
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf.d/reserbath.conf:/etc/nginx/conf.d/reserbath.conf
+      - ./public:/usr/src/reserbath-web/public
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+  nodejs:
+    build:
+      context: .
+      dockerfile: ./docker/nodejs/Dockerfile
+    volumes:
+      - .:/usr/src/reserbath-web
+      - /usr/src/reserbath-web/node_modules
+    entrypoint: npm run dev
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
