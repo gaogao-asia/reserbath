@@ -3,13 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 /**
  * 予約を管理するclass
  * Class Reservations
  * @package App
  */
-class Reservations extends Model
+class Reservation extends Model
 {
+    protected $table = 'reservations';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,14 +22,12 @@ class Reservations extends Model
         'user_id', 'reserve_time',
     ];
 
-    // Relations
     /**
-     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-      return $this->belongsTo(\App\User::class, 'user_id', 'id');
+      return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
 }

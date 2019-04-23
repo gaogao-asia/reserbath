@@ -17,6 +17,8 @@
                     You are logged in!
                 </div>
             </div>
+
+            <a href="{{ route('www.reservations.create') }}">風呂を予約する</a>
         </div>
     </div>
 </div>

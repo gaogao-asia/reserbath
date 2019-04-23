@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'reservations';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -37,13 +39,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relations
     /**
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
     public function reservations()
     {
-      return $this->hasMany(\App\User::class, 'user_id', 'id');
+      return $this->hasMany('App\Reservation', 'user_id', 'id');
     }
 }
