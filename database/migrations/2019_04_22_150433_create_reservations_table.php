@@ -15,7 +15,7 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->index();
+            $table->bigInteger('user_id')->unsigned()->index();
             $table->string('reserve_time');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
