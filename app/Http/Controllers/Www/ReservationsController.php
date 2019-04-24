@@ -14,7 +14,7 @@ use App\Reservation;
 class ReservationsController extends Controller
 {
     /**
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -37,21 +37,34 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump("aaaaaaaaaaa");
         $user = auth()->user();
-        var_dump($user->name);
         Reservation::create(['user_id' => $user->id, $request->get('reserve_time')]);
         return redirect(route('www.welcome'));
     }
 
+    /**
+     * @param Request $request
+     * @param Reservation $reservation
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Request $request, Reservation $reservation) {
         return view('www.reservations.show', compact('reservation'));
     }
 
+    /**
+     * @param Request $request
+     * @param Reservation $reservation
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(Request $request, Reservation $reservation) {
         return view('www.reservations.edit', compact('reservation'));
     }
 
+    /**
+     * @param Request $request
+     * @param Reservation $reservation
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(Request $request, Reservation $reservation) {
         $reservation->update($request->all());
         return redirect(route('www.reservations.show', compact('reservation')));
