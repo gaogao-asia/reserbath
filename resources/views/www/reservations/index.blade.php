@@ -1,16 +1,35 @@
-<div>
-    <h2>予約一覧</h2>
+@extends('layouts.app')
 
-    <a href="{{ route('www.reservations.create') }}">新規予約追加</a>
+@section('content')
+    <div>
+        <h3>予約一覧</h3>
+          <p class="text-right">
+             <a href="{{ route('www.reservations.create') }}" class="pull-right btn btn-primary btn-sm active">新規予約追加</a>
+         </p>
+    </div>
 
-    <ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">予約者氏名</th>
+          <th scope="col">予約開始時刻</th>
+        </tr>
+      </thead>
+      <tbody>
         @foreach($reservations as $reservation)
-            <li>
-                <a href="{{ route('www.reservations.show', [$reservation->id]) }}">
-                    <p>予約者氏名: {{ $reservation->user->name }}</p>
-                    <p>予約開始時刻: {{ $reservation->reserve_time }}</p>
-                </a>
-            </li>
+            <tr>
+                <th scope="row">
+                    <a href="{{ route('www.reservations.show', [$reservation->id]) }}">
+                        {{ $reservation->id}}
+                    </a>
+                </th>
+                <td>
+                    {{ $reservation->user->name }}
+                </td>
+              <td>{{ $reservation->reserve_time }}</td>
+            </tr>
         @endforeach
-    </ul>
-</div>
+      </tbody>
+    </table>
+@endsection
