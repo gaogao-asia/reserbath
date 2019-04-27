@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Www;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Reservation;
 
@@ -38,8 +39,22 @@ class ReservationsController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-        Reservation::create(['user_id' => $user->id, $request->get('reserve_time')]);
-        return redirect(route('www.welcome'));
+        $requestedTimeStartAt = Carbon::parse($request->get('reserve_time'));
+        $requestedTimeEndAt = $requestedTimeStartAt->copy()->addMinute(30);
+        // 同じ開始時刻の予約が入っていないか確認
+        $duplicatedReservationExists = Reservation::where('reserve_time', '>=', $requestedTimeStartAt)
+            ->where('reserve_time', '<', $requestedTimeEndAt)->exists();
+
+        if ($duplicatedReservationExists) {
+            return redirect(route('www.reservations.index'))->with('alert', 'すでに予約が入っています。時間を変更して予約してください');
+        } else {
+            Reservation::create([
+                'user_id' => $user->id,
+                'reserve_time' => $requestedTimeStartAt
+            ]);
+            return redirect(route('www.reservations.index'))->with('notice', '予約しました。');
+        }
+
     }
 
     /**
