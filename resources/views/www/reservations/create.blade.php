@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('www.layouts.base')
 
 @section('content')
   <div>
@@ -10,7 +10,7 @@
   {!! Form::open(['url' => route('www.reservations.store'), 'method' => 'post']) !!}
 
   <div class="form-group">
-      {!! Form::label('reserve_time', __('models.reservation.reserve_time')) !!}
+      {!! Form::label('reserve_time', __('models/reservation.reserve_time') . ' (予約枠は30分です)') !!}
       {!! Form::datetime('reserve_time', $value = null, $attributes = ['id' => 'reserve_time', 'class' => 'form-control', 'placeholder' => 'Enter your resevation bath time!!']) !!}
   </div>
   {!! Form::submit('予約する', $attributes =['class' => 'btn btn-primary']) !!}

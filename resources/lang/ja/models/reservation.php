@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'reserve_time' => '予約時刻',
+    'reserve_time' => '希望入浴開始時刻',
 ];
