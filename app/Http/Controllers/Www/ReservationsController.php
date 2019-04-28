@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Www;
 
 use App\Http\Controllers\Controller;
+use App\Services\ReserveTimeOptionService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Reservation;
@@ -29,7 +30,15 @@ class ReservationsController extends Controller
      */
     public function create(Request $request)
     {
-        return view('www.reservations.create');
+        $reserveTimeOptionService = new ReserveTimeOptionService();
+        $now = Carbon::now();
+        $timeOptions = $reserveTimeOptionService->makeTimeOptions($now);
+
+        $params = [
+            'timeOptions' => $timeOptions,
+            'baseTime' => $now,
+        ];
+        return view('www.reservations.create', $params);
     }
 
     /**
@@ -39,14 +48,22 @@ class ReservationsController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-        $requestedTimeStartAt = Carbon::parse($request->get('reserve_time'));
+
+        // createのviewが表示された時点の時刻を基準として、選択された予約時刻を取得する
+        $baseTime = Carbon::parse($request->get('base_time'));
+        $reserveTimeOptionService = new ReserveTimeOptionService();
+        $timeOptions = $reserveTimeOptionService->makeTimeOptions($baseTime);
+        $selectedTimeOption = $timeOptions[$request->get('reserve_time')];
+
+        $requestedTimeStartAt = Carbon::parse($selectedTimeOption);
         $requestedTimeEndAt = $requestedTimeStartAt->copy()->addMinute(30);
         // 同じ開始時刻の予約が入っていないか確認
         $duplicatedReservationExists = Reservation::where('reserve_time', '>=', $requestedTimeStartAt)
             ->where('reserve_time', '<', $requestedTimeEndAt)->exists();
 
         if ($duplicatedReservationExists) {
-            return redirect(route('www.reservations.index'))->with('alert', 'すでに予約が入っています。時間を変更して予約してください');
+            return redirect(route('www.reservations.index'))
+                ->with('alert', 'すでに予約が入っています。時間を変更して予約してください');
         } else {
             Reservation::create([
                 'user_id' => $user->id,
