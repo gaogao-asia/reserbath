@@ -25,7 +25,7 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-            $reservations = Reservation::where('reserve_time', '>', Carbon::now())->get();
+        $reservations = Reservation::where('reserve_time', '>', Carbon::now())->get();
         return view('www.reservations.index', compact('reservations'));
     }
 
@@ -84,7 +84,8 @@ class ReservationsController extends Controller
      * @param Reservation $reservation
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Request $request, Reservation $reservation) {
+    public function show(Request $request, Reservation $reservation)
+    {
         return view('www.reservations.show', compact('reservation'));
     }
 
@@ -93,7 +94,8 @@ class ReservationsController extends Controller
      * @param Reservation $reservation
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Request $request, Reservation $reservation) {
+    public function edit(Request $request, Reservation $reservation)
+    {
         return view('www.reservations.edit', compact('reservation'));
     }
 
@@ -102,7 +104,8 @@ class ReservationsController extends Controller
      * @param Reservation $reservation
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, Reservation $reservation) {
+    public function update(Request $request, Reservation $reservation)
+    {
         $reservation->update($request->all());
         return redirect(route('www.reservations.show', compact('reservation')));
     }

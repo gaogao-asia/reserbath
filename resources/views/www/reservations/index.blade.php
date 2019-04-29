@@ -3,20 +3,20 @@
 @section('content')
     <div>
         <h3>予約一覧</h3>
-          <p class="text-right">
-             <a href="{{ route('www.reservations.create') }}" class="pull-right btn btn-primary btn-sm active">新規予約追加</a>
-         </p>
+        <p class="text-right">
+            <a href="{{ route('www.reservations.create') }}" class="pull-right btn btn-primary btn-sm active">新規予約追加</a>
+        </p>
     </div>
 
     <table class="table">
-      <thead>
+        <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">予約者氏名</th>
-          <th scope="col">予約開始時刻</th>
+            <th scope="col">ID</th>
+            <th scope="col">予約者氏名</th>
+            <th scope="col">予約開始時刻</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         @foreach($reservations as $reservation)
             <tr>
                 <th scope="row">
@@ -27,9 +27,9 @@
                 <td>
                     {{ $reservation->user->name }}
                 </td>
-              <td>{{ $reservation->reserve_time }}</td>
+                <td>{{ $reservation->reserve_time }}</td>
             </tr>
         @endforeach
-      </tbody>
+        </tbody>
     </table>
 @endsection

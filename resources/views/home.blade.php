@@ -7,5 +7,6 @@
         </div>
     @endif
 
-    <a href="{{ route('www.reservations.create') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">風呂を予約する</a>
+    <a href="{{ route('www.reservations.create') }}" class="btn btn-primary btn-lg active" role="button"
+       aria-pressed="true">風呂を予約する</a>
 @endsection

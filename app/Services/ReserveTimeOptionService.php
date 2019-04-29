@@ -13,6 +13,10 @@ use Carbon\Carbon;
  */
 class ReserveTimeOptionService
 {
+    /**
+     * @param Carbon $time
+     * @return array
+     */
     public function makeTimeOptions(Carbon $time)
     {
         $timeOptions = [];
@@ -29,6 +33,10 @@ class ReserveTimeOptionService
         return $timeOptions;
     }
 
+    /**
+     * @param Carbon $targetTime
+     * @return array
+     */
     public function makeTimeOptionsForTargetHour(Carbon $targetTime)
     {
         $timeOptions = [];
