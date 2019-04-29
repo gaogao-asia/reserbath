@@ -33,7 +33,7 @@ class ReserveTimeOptionService
     {
         $timeOptions = [];
 
-        if ($targetTime->hour >= Reservation::SHORT_RESERVATION_TIME_START_HOUR ||
+        if ($targetTime->hour >= Reservation::SHORT_RESERVATION_TIME_START_HOUR &&
             $targetTime->hour <= Reservation::SHORT_RESERVATION_TIME_END_HOUR) {
             // 作成しようとした予約開始時刻が朝の時間帯の範囲の場合は、20分単位で選択肢を作成
             $startMinutes = [0, 20, 40];
@@ -44,8 +44,8 @@ class ReserveTimeOptionService
         foreach ($startMinutes as $startMinute) {
             if ($targetTime->minute <= $startMinute) {
                 $timeOptions[] = $targetTime->format('Y-m-d') . ' '
-                    . sprintf('%2d', $targetTime->hour) . ':'
-                    . sprintf('%2d', $startMinute) . ':00';
+                    . sprintf('%02d', $targetTime->hour) . ':'
+                    . sprintf('%02d', $startMinute) . ':00';
             }
         }
         return $timeOptions;
