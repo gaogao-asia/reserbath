@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('www.layouts.base')
 
 @section('content')
     <div>
         <h3>予約の編集</h3>
         <p class="text-right">
-            <a href="{{ route('www.reservations.index') }}" class="pull-right btn btn-secondary btn-sm active">予約一覧に戻る</a>
+            <a href="{{ route('www.reservations.index') }}"
+               class="pull-right btn btn-secondary btn-sm active">予約一覧に戻る</a>
         </p>
     </div>
     {!! Form::model($reservation, ['url' => route('www.reservations.update', $reservation), 'method' => 'put']) !!}
