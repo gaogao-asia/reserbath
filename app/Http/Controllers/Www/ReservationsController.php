@@ -15,12 +15,17 @@ use App\Reservation;
  */
 class ReservationsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $reservations = Reservation::all();
+            $reservations = Reservation::where('reserve_time', '>', Carbon::now())->get();
         return view('www.reservations.index', compact('reservations'));
     }
 
