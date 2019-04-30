@@ -39,6 +39,12 @@ if (token) {
 }
 
 /**
+* for api auth
++ https://www.webopixel.net/php/1343.html
+*/
+window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Laravel.apiToken;
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

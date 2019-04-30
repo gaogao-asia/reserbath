@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -35,5 +36,30 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // $user->update(['api_token' => str_random(60)]);
+        $user->api_token = str_random(60);
+        $user->save();
+
+        return redirect('/');
+    }
+
+    public function logout(Request $request)
+    {
+        // api_tokenをnullにする
+        $user = $request->user();
+        // $user->update(['api_token' => null]);
+        $user->api_token = null;
+        $user->save();
+
+        $this->guard()->logout();
+
+        $request->session()->flush();
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 }

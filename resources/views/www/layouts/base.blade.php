@@ -9,9 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -20,30 +17,32 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<div id="app">
-    @include('www.layouts.navbar')
+    <div id="app">
+        @include('www.layouts.navbar')
 
-    <main class="py-4">
-        <div class="container">
-            @if(Session::has('alert'))
-                <div class="alert alert-danger" role="alert">{{ session('alert') }}</div>
-            @endif
-            @if(Session::has('notice'))
-                <div class="alert alert-success" role="alert">{{ session('notice') }}</div>
-            @endif
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Dashboard</div>
+        <main class="py-4">
+            <div class="container">
+                @if(Session::has('alert'))
+                    <div class="alert alert-danger" role="alert">{{ session('alert') }}</div>
+                @endif
+                @if(Session::has('notice'))
+                    <div class="alert alert-success" role="alert">{{ session('notice') }}</div>
+                @endif
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">Dashboard</div>
 
-                        <div class="card-body">
-                            @yield('content')
+                            <div class="card-body">
+                                @yield('content')
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-</div>
+        </main>
+    </div>
+    <!-- Scripts -->
+    @include('www.layouts.scripts')
 </body>
 </html>
