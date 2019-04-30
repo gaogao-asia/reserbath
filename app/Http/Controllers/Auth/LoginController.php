@@ -40,9 +40,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        // $user->update(['api_token' => str_random(60)]);
-        $user->api_token = str_random(60);
-        $user->save();
+        $user->update(['api_token' => str_random(60)]);
 
         return redirect('/');
     }
@@ -51,9 +49,7 @@ class LoginController extends Controller
     {
         // api_tokenをnullにする
         $user = $request->user();
-        // $user->update(['api_token' => null]);
-        $user->api_token = null;
-        $user->save();
+        $user->update(['api_token' => null]);
 
         $this->guard()->logout();
 
