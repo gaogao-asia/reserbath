@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * 予約を管理するclass
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Reservation extends Model
 {
+    use Notifiable;use Notifiable;
+
     protected $table = 'reservations';
 
     /**
@@ -35,5 +38,10 @@ class Reservation extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+
+    public function routeNotificationForSlack()
+    {
+        return 'https://hooks.slack.com/services/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';
     }
 }
