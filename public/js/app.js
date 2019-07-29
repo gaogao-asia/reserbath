@@ -2006,6 +2006,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'reservation-index',
   data: function data() {
@@ -37697,17 +37700,29 @@ var render = function() {
               "th",
               { attrs: { scope: "row" } },
               [
-                _c(
-                  "router-link",
-                  { attrs: { to: "/reservations/" + reservation.id } },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(reservation.id) +
-                        "\n                    "
+                reservation.user_id === _vm.currentUser.id
+                  ? _c(
+                      "router-link",
+                      { attrs: { to: "/reservations/" + reservation.id } },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(reservation.id) +
+                            "\n                    "
+                        )
+                      ]
                     )
-                  ]
-                )
+                  : _vm._e(),
+                _vm._v(" "),
+                reservation.user_id !== _vm.currentUser.id
+                  ? _c("div", {}, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(reservation.id) +
+                          "\n                    "
+                      )
+                    ])
+                  : _vm._e()
               ],
               1
             ),
@@ -54439,8 +54454,8 @@ var user = Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rikuparkour1996/www/reserbath/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rikuparkour1996/www/reserbath/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/onukishota/kojin_dev/reserbath/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/onukishota/kojin_dev/reserbath/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
