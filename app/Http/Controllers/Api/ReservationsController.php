@@ -7,6 +7,8 @@ use App\Services\ReserveTimeOptionService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
+use App\Notifications\ReservationStore;
+use App\Notifications\ReservationUpdate;
 
 use App\Reservation;
 
@@ -77,12 +79,15 @@ class ReservationsController extends Controller
 
             return response()->json(['reservations' => $reservations]);
         } else {
-            Reservation::create([
+            $reservation = Reservation::create([
                 'user_id' => $user->id,
                 'reserve_time' => $requestedTimeStartAt
             ]);
 
             $reservations = Reservation::all();
+
+            $reservation->notify(new \App\Notifications\ReservationStore($reservation));
+
             return response()->json(['reservations' => $reservations]);
         }
 
@@ -118,6 +123,8 @@ class ReservationsController extends Controller
     {
         $reservation->update($request->all());
         $reservation->load('user');
+
+        $reservation->notify(new \App\Notifications\ReservationUpdate($reservation));
 
         return response()->json(['reservation' => $reservation]);
     }

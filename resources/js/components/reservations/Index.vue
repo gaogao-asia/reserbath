@@ -20,9 +20,12 @@
             <tbody>
                 <tr v-for="reservation in reservations">
                     <th scope="row">
-                        <router-link :to="`/reservations/${reservation.id}`" class="">
+                        <router-link :to="`/reservations/${reservation.id}`" class="" v-if="reservation.user_id === currentUser.id">
                             {{ reservation.id }}
                         </router-link>
+                        <div class="" v-if="reservation.user_id !== currentUser.id">
+                            {{ reservation.id }}
+                        </div>
                     </th>
                     <td>
                         {{ reservation.user.name }}
