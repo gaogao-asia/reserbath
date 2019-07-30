@@ -6,8 +6,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
+                    <a
+                        class="m-btn w-100 mb-3"
+                        href="/auth/login/twitter"
+                        btn-type="twitter">
+                        <i class="fa-twitter fa-fw">
+                        </i>
+                        <span class="pl-3">Twitterで登録する</span>
+                    </a>
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

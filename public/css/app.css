@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+/* ============================================================================
+ * color code
+ * ========================================================================= */
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10660,6 +10664,463 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+/* ============================================================================
+* modules
+* ========================================================================= */
+
+/* ----------------------------------------------------------------------------
+ * Button
+ * ------------------------------------------------------------------------- */
+
+.m-btn,
+.m-btnS,
+.m-btnM,
+.m-btnL {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1;
+  transition: 0.3s all ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+  background: #3b37af;
+}
+
+.m-btn a,
+.m-btnS a,
+.m-btnM a,
+.m-btnL a {
+  color: #fff;
+}
+
+.m-btn:hover,
+.m-btnS:hover,
+.m-btnM:hover,
+.m-btnL:hover {
+  color: #fff;
+}
+
+.m-btn:active,
+.m-btnS:active,
+.m-btnM:active,
+.m-btnL:active {
+  color: #fff;
+}
+
+.m-btn[btn-type=primary],
+.m-btnS[btn-type=primary],
+.m-btnM[btn-type=primary],
+.m-btnL[btn-type=primary] {
+  background: #3b37af;
+}
+
+.m-btn[btn-type=primary]:hover,
+.m-btnS[btn-type=primary]:hover,
+.m-btnM[btn-type=primary]:hover,
+.m-btnL[btn-type=primary]:hover {
+  background: #5e5ad6;
+}
+
+.m-btn[btn-type=primary]:active,
+.m-btnS[btn-type=primary]:active,
+.m-btnM[btn-type=primary]:active,
+.m-btnL[btn-type=primary]:active {
+  background: #0a02e8;
+}
+
+.m-btn[btn-type=secondly],
+.m-btnS[btn-type=secondly],
+.m-btnM[btn-type=secondly],
+.m-btnL[btn-type=secondly] {
+  background: #293162;
+}
+
+.m-btn[btn-type=secondly]:hover,
+.m-btnS[btn-type=secondly]:hover,
+.m-btnM[btn-type=secondly]:hover,
+.m-btnL[btn-type=secondly]:hover {
+  background: #44509f;
+}
+
+.m-btn[btn-type=secondly]:active,
+.m-btnS[btn-type=secondly]:active,
+.m-btnM[btn-type=secondly]:active,
+.m-btnL[btn-type=secondly]:active {
+  background: #071c9f;
+}
+
+.m-btn[btn-type=negative],
+.m-btnS[btn-type=negative],
+.m-btnM[btn-type=negative],
+.m-btnL[btn-type=negative] {
+  background: #505050;
+}
+
+.m-btn[btn-type=negative]:hover,
+.m-btnS[btn-type=negative]:hover,
+.m-btnM[btn-type=negative]:hover,
+.m-btnL[btn-type=negative]:hover {
+  background: #747474;
+}
+
+.m-btn[btn-type=negative]:active,
+.m-btnS[btn-type=negative]:active,
+.m-btnM[btn-type=negative]:active,
+.m-btnL[btn-type=negative]:active {
+  background: #232323;
+}
+
+.m-btn[btn-type=facebook],
+.m-btnS[btn-type=facebook],
+.m-btnM[btn-type=facebook],
+.m-btnL[btn-type=facebook] {
+  border-color: #3b5998;
+  color: #fff;
+  background: #3b5998;
+}
+
+.m-btn[btn-type=facebook]:hover,
+.m-btnS[btn-type=facebook]:hover,
+.m-btnM[btn-type=facebook]:hover,
+.m-btnL[btn-type=facebook]:hover {
+  border-color: #3b5998;
+  background: #3b5998;
+}
+
+.m-btn[btn-type=twitter],
+.m-btnS[btn-type=twitter],
+.m-btnM[btn-type=twitter],
+.m-btnL[btn-type=twitter] {
+  border-color: #1da1f2;
+  color: #fff;
+  background: #1da1f2;
+}
+
+.m-btn[btn-type=twitter]:hover,
+.m-btnS[btn-type=twitter]:hover,
+.m-btnM[btn-type=twitter]:hover,
+.m-btnL[btn-type=twitter]:hover {
+  border-color: #1da1f2;
+  background: #1da1f2;
+}
+
+.m-btn[btn-type=search-suggest],
+.m-btn[btn-type=search-obsessed],
+.m-btnS[btn-type=search-suggest],
+.m-btnS[btn-type=search-obsessed],
+.m-btnM[btn-type=search-suggest],
+.m-btnM[btn-type=search-obsessed],
+.m-btnL[btn-type=search-suggest],
+.m-btnL[btn-type=search-obsessed] {
+  color: #aaaaaa;
+  background: #fff;
+  position: relative;
+  border-bottom: 1px solid #d5d5d8;
+}
+
+.m-btn[btn-type=search-obsessed]::after,
+.m-btnS[btn-type=search-obsessed]::after,
+.m-btnM[btn-type=search-obsessed]::after,
+.m-btnL[btn-type=search-obsessed]::after {
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 5px solid transparent;
+  border-top-color: #aaaaaa;
+  top: 43%;
+  left: 55%;
+  margin-left: 46px;
+}
+
+.m-btn[btn-type=search-obsessed]:focus,
+.m-btnS[btn-type=search-obsessed]:focus,
+.m-btnM[btn-type=search-obsessed]:focus,
+.m-btnL[btn-type=search-obsessed]:focus {
+  outline: none;
+}
+
+.m-btn[disabled],
+.m-btn.is-disabled,
+.m-btnS[disabled],
+.m-btnS.is-disabled,
+.m-btnM[disabled],
+.m-btnM.is-disabled,
+.m-btnL[disabled],
+.m-btnL.is-disabled {
+  cursor: default;
+  color: #bcbcbc;
+  background: #ddd;
+  outline: none;
+}
+
+.m-btn[disabled]:hover,
+.m-btn.is-disabled:hover,
+.m-btnS[disabled]:hover,
+.m-btnS.is-disabled:hover,
+.m-btnM[disabled]:hover,
+.m-btnM.is-disabled:hover,
+.m-btnL[disabled]:hover,
+.m-btnL.is-disabled:hover {
+  color: #bcbcbc;
+  background: #ddd;
+}
+
+.m-btn[disabled]:active,
+.m-btn.is-disabled:active,
+.m-btnS[disabled]:active,
+.m-btnS.is-disabled:active,
+.m-btnM[disabled]:active,
+.m-btnM.is-disabled:active,
+.m-btnL[disabled]:active,
+.m-btnL.is-disabled:active {
+  color: #bcbcbc;
+  background: #ddd;
+}
+
+/* Size */
+
+.m-btn {
+  min-width: 145px;
+  min-height: 40px;
+  padding: 10px;
+}
+
+a.m-btn {
+  min-height: 20px;
+  min-width: 125px;
+}
+
+/* SizeS */
+
+.m-btnS {
+  min-width: 80px;
+  min-height: 24px;
+  background: #293160;
+}
+
+.m-btnM {
+  min-width: 145px;
+  min-height: 50px;
+  padding: 10px;
+}
+
+a.m-btn {
+  min-height: 20px;
+  min-width: 125px;
+}
+
+/* SizeL */
+
+.m-btnL {
+  min-width: 195px;
+  min-height: 64px;
+  padding: 20px;
+}
+
+.m-btn-close[btn-type=close-button] {
+  color: #aaaaaa;
+  border: 1px solid #aaaaaa;
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+}
+
+.m-btn-close[btn-type=close-button] span {
+  position: relative;
+  top: 31%;
+}
+
+/* ----------------------------------------------------------------------------
+ * icon from fontawesome
+ * ------------------------------------------------------------------------- */
+
+.fa-location {
+  color: #666666;
+}
+
+.fa-location::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F3C5";
+  font-weight: 600;
+  color: #666666;
+}
+
+.fa-location span {
+  font-size: 12px;
+}
+
+.fa-clock::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F017";
+  font-weight: 600;
+}
+
+.fa-credit-card::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F09D";
+  font-weight: 600;
+}
+
+.fa-sleep::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F236";
+  font-weight: 600;
+}
+
+.fa-train::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F238";
+  font-weight: 600;
+}
+
+.fa-eat::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F2E7";
+  font-weight: 600;
+}
+
+.fa-restaurant::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F54E";
+  font-weight: 600;
+}
+
+.fa-lunch::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F185";
+  font-weight: 600;
+}
+
+.fa-dinner::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F186";
+  font-weight: 600;
+}
+
+.fa-star-yellow::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F005";
+  font-weight: 600;
+  color: #FFD20B;
+}
+
+.fa-star-gray::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F005";
+  font-weight: 600;
+  color: #DEDEDE;
+}
+
+.fa-heart-red::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F004";
+  font-weight: 600;
+  color: #ff9393;
+}
+
+.fa-heart-gray::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F004";
+  font-weight: 600;
+  color: #DEDEDE;
+}
+
+.fa-yen::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F157";
+  font-weight: 600;
+}
+
+.fa-key::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F084";
+  font-weight: 600;
+}
+
+.fa-signout::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F2F5";
+  font-weight: 600;
+}
+
+.fa-search::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F002";
+  font-weight: 600;
+}
+
+.fa-question::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F059";
+  font-weight: 600;
+}
+
+.fa-map::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F3C5";
+  font-weight: 600;
+}
+
+.fa-friends::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F500";
+  font-weight: 600;
+}
+
+.fa-wink::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F4DA";
+  font-weight: 600;
+}
+
+.fa-twitter::before {
+  font-family: "Font Awesome 5 Brands";
+  content: "\F099";
+  font-weight: 600;
+}
+
+.fa-facebook::before {
+  font-family: "Font Awesome 5 Brands";
+  content: "\F39E";
+  font-weight: 600;
+}
+
+.fa-lightbulb::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F0EB";
+  font-weight: 600;
+}
+
+.fa-thumbs-up::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F164";
+  font-weight: 600;
+}
+
+.fa-crown::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\F521";
+  font-weight: 600;
+}
+
+.fa-crown[ranking="1"] {
+  color: #FFED55;
+}
+
+.fa-crown[ranking="2"] {
+  color: #C8C8C8;
+}
+
+.fa-crown[ranking="3"] {
+  color: #E4B18D;
 }
 
 .navbar-laravel {
