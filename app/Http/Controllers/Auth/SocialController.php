@@ -39,7 +39,7 @@ class SocialController extends Controller
     public function handleProviderCallback($providerName)
     {
         try{
-            $socialUser = Socialite::driver($providerName)->stateless()->user();
+            $socialUser = Socialite::driver($providerName)->userFromTokenAndSecret(config('services.twitter.client_id'), config('services.twitter.client_secret'));
 
         } catch(Exception $e){
             return redirect("/");
