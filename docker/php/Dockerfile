@@ -17,7 +17,7 @@ COPY . $APP_ROOT
 RUN npm run production
 
 
-FROM php:7.2.12-fpm-alpine3.8
+FROM php:7.3.7-fpm-alpine3.10
 ENV APP_ROOT /usr/src/reserbath-web
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
@@ -33,12 +33,14 @@ COPY composer.lock $APP_ROOT
 SHELL ["/bin/sh", "-o", "pipefail", "-c"]
 RUN apk update && \
     apk add --update --no-cache \
-    bash=4.4.19-r1 \
+    bash=5.0.0-r0 \
     mysql-client \
     zlib-dev \
+    libzip-dev \
+    icu-dev \
     && \
     NPROC="$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1)" && \
-    docker-php-ext-install -j"${NPROC}" pdo_mysql zip && \
+    docker-php-ext-install -j"${NPROC}" iconv intl pdo_mysql zip && \
     wget https://raw.githubusercontent.com/composer/getcomposer.org/6cc488c7604093278748e0b4fb9b80f21141ecb8/web/installer -O - -q \
     | php -- --quiet --install-dir=/usr/local/bin --filename composer && \
     composer install --no-interaction --no-autoloader --no-scripts
