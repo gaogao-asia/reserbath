@@ -10,6 +10,14 @@ Route::domain($reserbath_domain)->group(function () {
     });
 });
 
+Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function ()
+{
+  Route::get('login/{provider}', 'Auth\SocialController@redirectToProvider');
+  Route::get('{provider}/callback', 'Auth\SocialController@handleProviderCallback');
+
+
+});
+
 Route::group(['prefix' => 'auth'], function () {
   Auth::routes();
 });
