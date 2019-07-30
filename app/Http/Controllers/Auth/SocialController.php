@@ -39,7 +39,7 @@ class SocialController extends Controller
     public function handleProviderCallback($providerName)
     {
         try{
-            $socialUser = Socialite::driver($providerName)->user();
+            $socialUser = Socialite::driver($providerName)->stateless()->user();
 
         } catch(Exception $e){
             return redirect("/");
