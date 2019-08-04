@@ -67,6 +67,7 @@ class SocialController extends Controller
               } else {
 
                 $user = User::firstOrCreate(
+                            'password' => uniqid(),
                     [
                         'name'        => $socialUser->getName(),
                         'email'       => $email,
