@@ -99,12 +99,10 @@ class SocialController extends Controller
 
         auth()->login($user);
 
-        if (strpos(URL::previous(),'twitter') !== false) {
-          return redirect('/');
-
+        if (strpos(URL::previous(), SocialProvider::PROVIDER_TWITTER) !== false) {
+            return redirect('/');
         } else {
-          return redirect(URL::previous());
+            return redirect(URL::previous());
         }
     }
-
 }
