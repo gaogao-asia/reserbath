@@ -41,32 +41,26 @@ class SocialController extends Controller
 
         if (!$provider) {
             $user = \DB::transaction(function () use ($socialUser, $providerName) {
-                if (empty($socialUser->getEmail())) {
-                    $email = $socialUser->getName() . '@fakeEmail.com';
-                } else {
-                    $email = $socialUser->getEmail();
-                }
+                $email = $socialUser->getEmail() ? $socialUser->getEmail() : $socialUser->getName() . '@fakeEmail.com';
 
                 if (User::where('email', $email)->exists()) {
                     $user = User::where('email', $email)->first();
                     $user->update(['api_token' => str_random(60)]);
                 } else {
-                    $user = User::firstOrCreate(
-                        [
-                            'name' => $socialUser->getName(),
-                            'email' => $email,
-                            'password' => uniqid(),
-                            'api_token' => str_random(60)
-                        ]
-                    );
+                    $user = User::firstOrCreate([
+                        'name' => $socialUser->getName(),
+                        'email' => $email,
+                        'password' => uniqid(),
+                        'api_token' => str_random(60)
+                    ]);
                 }
-                SocialProvider::firstOrCreate(
-                    [
-                        'user_id' => $user->id,
-                        'provider_id' => $socialUser->getId(),
-                        'provider' => $providerName
-                    ]
-                );
+
+                SocialProvider::firstOrCreate([
+                    'user_id' => $user->id,
+                    'provider_id' => $socialUser->getId(),
+                    'provider' => $providerName
+                ]);
+
                 return $user;
             });
         } else {
@@ -76,7 +70,7 @@ class SocialController extends Controller
 
         auth()->login($user);
 
-        if (strpos(URL::previous(), SocialProvider::PROVIDER_TWITTER) !== false) {
+        if (!!strpos(URL::previous(), SocialProvider::PROVIDER_TWITTER)) {
             return redirect('/');
         } else {
             return redirect(URL::previous());
