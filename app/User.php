@@ -45,6 +45,14 @@ class User extends Authenticatable
      */
     public function reservations()
     {
-      return $this->hasMany('App\Reservation', 'user_id', 'id');
+        return $this->hasMany('App\Reservation', 'user_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function socialProvider()
+    {
+        return $this->hasOne('App\SocialProvider', 'user_id', 'id');
     }
 }
