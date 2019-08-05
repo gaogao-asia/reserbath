@@ -339,28 +339,30 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
-                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/e17f069ede36f7534b95adec71910ed1b49c74ea",
+                "reference": "e17f069ede36f7534b95adec71910ed1b49c74ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": "^7.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.5"
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.8",
+                "phpunit/phpunit": "^8.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -374,12 +376,12 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
                     "name": "Guilherme Blanco",
                     "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Johannes Schmitt",
@@ -395,7 +397,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-06-08T11:03:04+00:00"
+            "time": "2019-07-30T19:33:28+00:00"
         },
         {
             "name": "dragonmantank/cron-expression",
@@ -628,24 +630,24 @@
         },
         {
             "name": "fideloper/proxy",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fideloper/TrustedProxy.git",
-                "reference": "177c79a2d1f9970f89ee2fb4c12b429af38b6dfb"
+                "reference": "39a4c2165e578bc771f5dc031c273210a3a9b6d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/177c79a2d1f9970f89ee2fb4c12b429af38b6dfb",
-                "reference": "177c79a2d1f9970f89ee2fb4c12b429af38b6dfb",
+                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/39a4c2165e578bc771f5dc031c273210a3a9b6d2",
+                "reference": "39a4c2165e578bc771f5dc031c273210a3a9b6d2",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "~5.0",
+                "illuminate/contracts": "~5.0|~6.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "illuminate/http": "~5.6",
+                "illuminate/http": "~5.6|~6.0",
                 "mockery/mockery": "~1.0",
                 "phpunit/phpunit": "^6.0"
             },
@@ -678,7 +680,7 @@
                 "proxy",
                 "trusted proxy"
             ],
-            "time": "2019-01-10T14:06:47+00:00"
+            "time": "2019-07-29T16:49:45+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -957,16 +959,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.29",
+            "version": "v5.8.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "489ae2218c7eb138caac780de584d8df9fe8160b"
+                "reference": "7ccf0cf63931a8d8391aed90e6fc011381ea6838"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/489ae2218c7eb138caac780de584d8df9fe8160b",
-                "reference": "489ae2218c7eb138caac780de584d8df9fe8160b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7ccf0cf63931a8d8391aed90e6fc011381ea6838",
+                "reference": "7ccf0cf63931a8d8391aed90e6fc011381ea6838",
                 "shasum": ""
             },
             "require": {
@@ -1100,25 +1102,25 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-07-16T14:05:28+00:00"
+            "time": "2019-07-30T14:08:47+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/slack-notification-channel.git",
-                "reference": "bfa411ba8affbcfad3a36b8716cf2ed906a248ac"
+                "reference": "c5781470bf1e913d691be17d4d0ee65b6220edb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/bfa411ba8affbcfad3a36b8716cf2ed906a248ac",
-                "reference": "bfa411ba8affbcfad3a36b8716cf2ed906a248ac",
+                "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/c5781470bf1e913d691be17d4d0ee65b6220edb7",
+                "reference": "c5781470bf1e913d691be17d4d0ee65b6220edb7",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0",
-                "illuminate/notifications": "~5.8.0",
+                "illuminate/notifications": "~5.8.0|^6.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
@@ -1157,32 +1159,32 @@
                 "notifications",
                 "slack"
             ],
-            "time": "2019-02-26T16:15:25+00:00"
+            "time": "2019-07-30T15:45:10+00:00"
         },
         {
             "name": "laravel/socialite",
-            "version": "v4.1.3",
+            "version": "v4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "f92e15a8ba4dfd730cddc775a7c1ca2251f30cff"
+                "reference": "ab5974b13b775e14d11f220064a110d60743eee0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/f92e15a8ba4dfd730cddc775a7c1ca2251f30cff",
-                "reference": "f92e15a8ba4dfd730cddc775a7c1ca2251f30cff",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/ab5974b13b775e14d11f220064a110d60743eee0",
+                "reference": "ab5974b13b775e14d11f220064a110d60743eee0",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "~6.0",
-                "illuminate/http": "~5.7.0|~5.8.0|~5.9.0",
-                "illuminate/support": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/http": "~5.7.0|~5.8.0|^6.0",
+                "illuminate/support": "~5.7.0|~5.8.0|^6.0",
                 "league/oauth1-client": "~1.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
-                "illuminate/contracts": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/contracts": "~5.7.0|~5.8.0|^6.0",
                 "mockery/mockery": "~1.0",
                 "phpunit/phpunit": "~7.0"
             },
@@ -1221,26 +1223,26 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2019-04-02T17:06:04+00:00"
+            "time": "2019-07-30T16:07:14+00:00"
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.8",
+            "version": "v1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "cafbf598a90acde68985660e79b2b03c5609a405"
+                "reference": "eb0075527fdeeb1cc1d68bd4ca7d50256b30a827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/cafbf598a90acde68985660e79b2b03c5609a405",
-                "reference": "cafbf598a90acde68985660e79b2b03c5609a405",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/eb0075527fdeeb1cc1d68bd4ca7d50256b30a827",
+                "reference": "eb0075527fdeeb1cc1d68bd4ca7d50256b30a827",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "~5.1",
-                "illuminate/contracts": "~5.1",
-                "illuminate/support": "~5.1",
+                "illuminate/console": "~5.1|^6.0",
+                "illuminate/contracts": "~5.1|^6.0",
+                "illuminate/support": "~5.1|^6.0",
                 "php": ">=5.5.9",
                 "psy/psysh": "0.7.*|0.8.*|0.9.*",
                 "symfony/var-dumper": "~3.0|~4.0"
@@ -1284,7 +1286,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2018-10-12T19:39:35+00:00"
+            "time": "2019-07-29T18:09:25+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -1479,9 +1481,9 @@
             "authors": [
                 {
                     "name": "Ben Corlett",
+                    "role": "Developer",
                     "email": "bencorlett@me.com",
-                    "homepage": "http://www.webcomm.com.au",
-                    "role": "Developer"
+                    "homepage": "http://www.webcomm.com.au"
                 }
             ],
             "description": "OAuth 1.0 Client Library",
@@ -1581,16 +1583,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.21.3",
+            "version": "2.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "58bdbbfab17ccd2ec7347b99e997f18232def4dc"
+                "reference": "1a0e48b5f656065ba3c265b058b25d36c2162a5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/58bdbbfab17ccd2ec7347b99e997f18232def4dc",
-                "reference": "58bdbbfab17ccd2ec7347b99e997f18232def4dc",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1a0e48b5f656065ba3c265b058b25d36c2162a5e",
+                "reference": "1a0e48b5f656065ba3c265b058b25d36c2162a5e",
                 "shasum": ""
             },
             "require": {
@@ -1601,7 +1603,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
                 "kylekatarnls/multi-tester": "^1.1",
-                "phpmd/phpmd": "^2.6",
+                "phpmd/phpmd": "dev-php-7.1-compatibility",
                 "phpstan/phpstan": "^0.11",
                 "phpunit/phpunit": "^7.5 || ^8.0",
                 "squizlabs/php_codesniffer": "^3.4"
@@ -1644,7 +1646,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-07-18T18:47:28+00:00"
+            "time": "2019-07-28T09:02:12+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4315,18 +4317,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -4597,8 +4599,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -4648,8 +4650,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -4690,8 +4692,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Simple template engine.",
@@ -4739,8 +4741,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Utility class for timing",
@@ -5441,8 +5443,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
