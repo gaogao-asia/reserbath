@@ -42,6 +42,6 @@ class Reservation extends Model
 
     public function routeNotificationForSlack()
     {
-        return 'https://hooks.slack.com/services/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';
+        return 'https://hooks.slack.com/services/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';
     }
 }
