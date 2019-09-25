@@ -11,6 +11,9 @@ export default {
     reservation: [],
     baseTime: [],
     timeOptions: [],
+    posts: [],
+    post: [],
+    categories: []
   },
 
   getters: {
@@ -22,6 +25,15 @@ export default {
     },
     reservation (state) {
       return state.reservation
+    },
+    posts (state) {
+      return state.posts
+    },
+    post (state) {
+      return state.post
+    },
+    categories (state) {
+      return state.categories
     },
     baseTime (state) {
       return state.baseTime
@@ -37,6 +49,15 @@ export default {
     },
     updateReservation (state, payload) {
       state.reservation = payload
+    },
+    updatePosts (state, payload) {
+      state.posts = payload
+    },
+    updatePost (state, payload) {
+      state.post = payload
+    },
+    updateCategories (state, payload) {
+      state.categories = payload
     },
     updateBaseTime (state, payload) {
       state.baseTime = payload
@@ -75,7 +96,6 @@ export default {
         })
     },
     postReservation ({ commit }, { currentUser, reserve_time, base_time}) {
-      console.log(currentUser)
       axios
         .post(`/api/reservations`,{
           user_id: currentUser.id,
@@ -103,6 +123,57 @@ export default {
         })
         .catch((err) => {
           alert(err)
+        })
+    },
+    getPosts ({ commit }) {
+      axios
+        .get('/api/posts', {})
+        .then((response) => {
+          commit('updatePosts', response.data.posts || [])
+        })
+    },
+    getPost ({ commit }, { postId }) {
+      axios
+        .get(`/api/posts/${postId}`, {})
+        .then((response) => {
+          commit('updatePost', response.data.post || [])
+        })
+    },
+    postPost ({ commit }, { name, content, category_id }) {
+      axios
+        .post(`/api/posts`,{
+          name: name,
+          content: content,
+          category_id: category_id,
+        })
+        .then((response) => {
+          commit('updatePost', response.data.post || [])
+          window.location.href = `/posts`
+        })
+        .catch((err) => {
+          alert(err)
+        })
+    },
+    putPost ({ commit }, { id, name, content, category_id}) {
+      axios
+        .put(`/api/posts/${id}`,{
+          name: name,
+          content: content,
+          category_id: category_id,
+        })
+        .then((response) => {
+          commit('updatePost', response.data.updatePost || [])
+          window.location.href = `/posts/${id}`
+        })
+        .catch((err) => {
+          alert(err)
+        })
+    },
+    getCategories ({ commit }) {
+      axios
+        .get('/api/categories', {})
+        .then((response) => {
+          commit('updateCategories', response.data.categories || [])
         })
     },
     // login ({ commit }) {
