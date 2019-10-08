@@ -13,6 +13,7 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('admin.home');
 
     $router->resource('reservations', ReservationController::class);
+    $router->resource('categories', CategoryController::class);
     $router->resource('users', UserController::class);
 
 });

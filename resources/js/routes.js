@@ -6,6 +6,11 @@ import Show from './components/reservations/Show.vue'
 import Create from './components/reservations/Create.vue'
 import Edit from './components/reservations/Edit.vue'
 
+import PostIndex from './components/posts/Index.vue'
+import PostShow from './components/posts/Show.vue'
+import PostCreate from './components/posts/Create.vue'
+import PostEdit from './components/posts/Edit.vue'
+
 export const routes = [
   {
     path: '/',
@@ -32,6 +37,22 @@ export const routes = [
       {
         path: 'reservations/:id/edit',
         component: Edit,
+      },
+      {
+        path: '/posts',
+        component: PostIndex
+      },
+      {
+        path: 'posts/create',
+        component: PostCreate,
+      },
+      {
+        path: 'posts/:id',
+        component: PostShow,
+      },
+      {
+        path: 'posts/:id/edit',
+        component: PostEdit,
       },
     ]
   }
