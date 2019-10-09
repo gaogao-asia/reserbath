@@ -11123,6 +11123,28 @@ a.m-btn {
   color: #E4B18D;
 }
 
+/* ----------------------------------------------------------------------------
+ * select
+ * ------------------------------------------------------------------------- */
+
+.m-select {
+  background: url(/images/icon_arrow_down.svg) no-repeat right 16px center/12px auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #666;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+  cursor: pointer;
+  text-align: center;
+  min-width: 152px;
+  padding: 4px 8px;
+  background-color: #fff;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

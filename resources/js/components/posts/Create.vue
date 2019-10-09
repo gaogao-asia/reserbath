@@ -8,11 +8,10 @@
 
         <form>
           <div class="form-group form-check">
-            <label for="exampleFormControlInput1">Category</label>
             <select
               v-model="category_id"
-              class="form-control">
-              <option disabled value="">Please select one</option>
+              class="form-control m-select">
+              <option disabled value="">Categoryを選ぶ</option>
               <template
                 v-for="(category, index) in categories">
                 <option
@@ -21,12 +20,15 @@
                 </option>
               </template>
             </select>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Name</label>
-              <input v-model="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Document Name">
+            <div class="form-group" style="text-align: left;">
+              <!-- <label for="exampleFormControlInput1">Name</label>
+              <input v-model="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Document Name"> -->
+               <v-text-field
+                v-model="name"
+                hint="ducument name"
+              ></v-text-field>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
               <tinyMce api-key="vtusjnetekeyyvky2v0cq1rhddmgwimlni7huhg1doec653f" v-model="content"></tinyMce>
             </div>
           </div>
@@ -76,3 +78,6 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

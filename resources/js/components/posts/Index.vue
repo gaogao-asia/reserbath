@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div>
       <cardTop
       :title="'House Document一覧'"
@@ -6,30 +6,20 @@
       :btnLink="'/posts/create'">
       </cardTop>
 
-      <ul class="list-unstyled">
-        <li class="media" v-for="category in categories">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">{{ category.name }}</h5>
-            <template class="media" v-for="post in category.posts">
-              <p>
-                <router-link
-                :to="`/posts/${post.id}`"
-                class="">{{ post.name }}</router-link>
-              </p>
-            </template>
-          </div>
-        </li>
-      </ul>
+      <b-tabs content-class="mt-3">
+        <template v-for="category in categories">
+            <b-tab :title="category.name" active>
+              <template v-for="post in category.posts">
+                <p>
+                  <router-link
+                  :to="`/posts/${post.id}`"
+                  class="">{{ post.name }}</router-link>
+                </p>
+              </template>
+            </b-tab>
+        </template>
+      </b-tabs>
     </div>
-</template> -->
-<template>
-  <div>
-    <b-tabs content-class="mt-3">
-      <b-tab title="First" active><p>I'm the first tab</p></b-tab>
-      <b-tab title="Second"><p>I'm the second tab</p></b-tab>
-      <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
-    </b-tabs>
-  </div>
 </template>
 
 <script>
