@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea v-model="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+              <tinyMce api-key="vtusjnetekeyyvky2v0cq1rhddmgwimlni7huhg1doec653f" v-model="content"></tinyMce>
             </div>
           </div>
           <button

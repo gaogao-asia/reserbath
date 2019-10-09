@@ -11,12 +11,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 
+import TinyMce from '@tinymce/tinymce-vue'
+
 import {routes} from './routes'
 import StoreData from './store'
 import MainContent from './components/MainContent.vue';
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
+
+Vue.component('tinyMce', TinyMce)
 
 const store = new Vuex.Store(StoreData)
 
@@ -31,6 +35,6 @@ const app = new Vue({
   router,
   store,
   components: {
-    MainContent
+    MainContent,
   }
 })

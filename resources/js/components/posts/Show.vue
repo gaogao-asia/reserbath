@@ -13,9 +13,7 @@
 
           <li class="media">
             <div class="media-body">
-                <p>
-                  {{ post.content }}
-                </p>
+                 <div v-html="post.content"></div>
             </div>
           </li>
         </ul>
@@ -33,6 +31,7 @@ export default {
 
   data () {
     return {
+      compiledContent: ''
     }
   },
 
@@ -44,18 +43,15 @@ export default {
     currentUser() {
       return this.$store.getters.currentUser
     },
-
     post() {
       return this.$store.getters.post
-    }
-
+    },
   },
 
   methods: {
     fetch () {
       this.$store.dispatch('getPost', {postId: this.$route.params.id})
     },
-
   },
 }
 </script>

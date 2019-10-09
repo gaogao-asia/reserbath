@@ -86,6 +86,396 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js ***!
+  \******************************************************************************/
+/*! exports provided: create, load */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Utils */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+var injectScriptTag = function (scriptId, doc, url, callback) {
+    var scriptTag = doc.createElement('script');
+    scriptTag.referrerPolicy = 'origin';
+    scriptTag.type = 'application/javascript';
+    scriptTag.id = scriptId;
+    scriptTag.addEventListener('load', callback);
+    scriptTag.src = url;
+    if (doc.head) {
+        doc.head.appendChild(scriptTag);
+    }
+};
+var create = function () {
+    return {
+        listeners: [],
+        scriptId: Object(_Utils__WEBPACK_IMPORTED_MODULE_0__["uuid"])('tiny-script'),
+        scriptLoaded: false
+    };
+};
+var load = function (state, doc, url, callback) {
+    if (state.scriptLoaded) {
+        callback();
+    }
+    else {
+        state.listeners.push(callback);
+        if (!doc.getElementById(state.scriptId)) {
+            injectScriptTag(state.scriptId, doc, url, function () {
+                state.listeners.forEach(function (fn) { return fn(); });
+                state.scriptLoaded = true;
+            });
+        }
+    }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js ***!
+  \*************************************************************************/
+/*! exports provided: getTinymce */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTinymce", function() { return getTinymce; });
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var getGlobal = function () { return (typeof window !== 'undefined' ? window : global); };
+var getTinymce = function () {
+    var global = getGlobal();
+    return global && global.tinymce ? global.tinymce : null;
+};
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js ***!
+  \***********************************************************************/
+/*! exports provided: bindHandlers, bindModelHandlers, initEditor, uuid, isTextarea, mergePlugins */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindHandlers", function() { return bindHandlers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindModelHandlers", function() { return bindModelHandlers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initEditor", function() { return initEditor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uuid", function() { return uuid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isTextarea", function() { return isTextarea; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mergePlugins", function() { return mergePlugins; });
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var validEvents = [
+    'onActivate',
+    'onAddUndo',
+    'onBeforeAddUndo',
+    'onBeforeExecCommand',
+    'onBeforeGetContent',
+    'onBeforeRenderUI',
+    'onBeforeSetContent',
+    'onBeforePaste',
+    'onBlur',
+    'onChange',
+    'onClearUndos',
+    'onClick',
+    'onContextMenu',
+    'onCopy',
+    'onCut',
+    'onDblclick',
+    'onDeactivate',
+    'onDirty',
+    'onDrag',
+    'onDragDrop',
+    'onDragEnd',
+    'onDragGesture',
+    'onDragOver',
+    'onDrop',
+    'onExecCommand',
+    'onFocus',
+    'onFocusIn',
+    'onFocusOut',
+    'onGetContent',
+    'onHide',
+    'onInit',
+    'onKeyDown',
+    'onKeyPress',
+    'onKeyUp',
+    'onLoadContent',
+    'onMouseDown',
+    'onMouseEnter',
+    'onMouseLeave',
+    'onMouseMove',
+    'onMouseOut',
+    'onMouseOver',
+    'onMouseUp',
+    'onNodeChange',
+    'onObjectResizeStart',
+    'onObjectResized',
+    'onObjectSelected',
+    'onPaste',
+    'onPostProcess',
+    'onPostRender',
+    'onPreProcess',
+    'onProgressState',
+    'onRedo',
+    'onRemove',
+    'onReset',
+    'onSaveContent',
+    'onSelectionChange',
+    'onSetAttrib',
+    'onSetContent',
+    'onShow',
+    'onSubmit',
+    'onUndo',
+    'onVisualAid'
+];
+var isValidKey = function (key) { return validEvents.indexOf(key) !== -1; };
+var bindHandlers = function (initEvent, listeners, editor) {
+    Object.keys(listeners)
+        .filter(isValidKey)
+        .forEach(function (key) {
+        var handler = listeners[key];
+        if (typeof handler === 'function') {
+            if (key === 'onInit') {
+                handler(initEvent, editor);
+            }
+            else {
+                editor.on(key.substring(2), function (e) { return handler(e, editor); });
+            }
+        }
+    });
+};
+var bindModelHandlers = function (ctx, editor) {
+    var modelEvents = ctx.$props.modelEvents ? ctx.$props.modelEvents : null;
+    var normalizedEvents = Array.isArray(modelEvents) ? modelEvents.join(' ') : modelEvents;
+    var currentContent;
+    ctx.$watch('value', function (val, prevVal) {
+        if (editor && typeof val === 'string' && val !== currentContent && val !== prevVal) {
+            editor.setContent(val);
+            currentContent = val;
+        }
+    });
+    editor.on(normalizedEvents ? normalizedEvents : 'change keyup undo redo', function () {
+        currentContent = editor.getContent();
+        ctx.$emit('input', currentContent);
+    });
+};
+var initEditor = function (initEvent, ctx, editor) {
+    var value = ctx.$props.value ? ctx.$props.value : '';
+    var initialValue = ctx.$props.initialValue ? ctx.$props.initialValue : '';
+    editor.setContent(value || initialValue);
+    // checks if the v-model shorthand is used (which sets an v-on:input listener) and then binds either
+    // specified the events or defaults to "change keyup" event and emits the editor content on that event
+    if (ctx.$listeners.input) {
+        bindModelHandlers(ctx, editor);
+    }
+    bindHandlers(initEvent, ctx.$listeners, editor);
+};
+var unique = 0;
+var uuid = function (prefix) {
+    var time = Date.now();
+    var random = Math.floor(Math.random() * 1000000000);
+    unique++;
+    return prefix + '_' + random + unique + String(time);
+};
+var isTextarea = function (element) {
+    return element !== null && element.tagName.toLowerCase() === 'textarea';
+};
+var normalizePluginArray = function (plugins) {
+    if (typeof plugins === 'undefined' || plugins === '') {
+        return [];
+    }
+    return Array.isArray(plugins) ? plugins : plugins.split(' ');
+};
+var mergePlugins = function (initPlugins, inputPlugins) {
+    return normalizePluginArray(initPlugins).concat(normalizePluginArray(inputPlugins));
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js ***!
+  \***********************************************************************************/
+/*! exports provided: Editor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Editor", function() { return Editor; });
+/* harmony import */ var _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ScriptLoader */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/ScriptLoader.js");
+/* harmony import */ var _TinyMCE__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../TinyMCE */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/TinyMCE.js");
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/Utils.js");
+/* harmony import */ var _EditorPropTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditorPropTypes */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+
+
+var scriptState = _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__["create"]();
+var renderInline = function (h, id, tagName) {
+    return h(tagName ? tagName : 'div', {
+        attrs: { id: id }
+    });
+};
+var renderIframe = function (h, id) {
+    return h('textarea', {
+        attrs: { id: id },
+        style: { visibility: 'hidden' }
+    });
+};
+var initialise = function (ctx) { return function () {
+    var finalInit = __assign({}, ctx.$props.init, { readonly: ctx.$props.disabled, selector: "#" + ctx.elementId, plugins: Object(_Utils__WEBPACK_IMPORTED_MODULE_2__["mergePlugins"])(ctx.$props.init && ctx.$props.init.plugins, ctx.$props.plugins), toolbar: ctx.$props.toolbar || (ctx.$props.init && ctx.$props.init.toolbar), inline: ctx.inlineEditor, setup: function (editor) {
+            ctx.editor = editor;
+            editor.on('init', function (e) { return Object(_Utils__WEBPACK_IMPORTED_MODULE_2__["initEditor"])(e, ctx, editor); });
+            if (ctx.$props.init && typeof ctx.$props.init.setup === 'function') {
+                ctx.$props.init.setup(editor);
+            }
+        } });
+    if (Object(_Utils__WEBPACK_IMPORTED_MODULE_2__["isTextarea"])(ctx.element)) {
+        ctx.element.style.visibility = '';
+    }
+    Object(_TinyMCE__WEBPACK_IMPORTED_MODULE_1__["getTinymce"])().init(finalInit);
+}; };
+var Editor = {
+    props: _EditorPropTypes__WEBPACK_IMPORTED_MODULE_3__["editorProps"],
+    created: function () {
+        this.elementId = this.$props.id || Object(_Utils__WEBPACK_IMPORTED_MODULE_2__["uuid"])('tiny-vue');
+        this.inlineEditor = (this.$props.init && this.$props.init.inline) || this.$props.inline;
+    },
+    watch: {
+        disabled: function () {
+            this.editor.setMode(this.disabled ? 'readonly' : 'design');
+        }
+    },
+    mounted: function () {
+        this.element = this.$el;
+        if (Object(_TinyMCE__WEBPACK_IMPORTED_MODULE_1__["getTinymce"])() !== null) {
+            initialise(this)();
+        }
+        else if (this.element && this.element.ownerDocument) {
+            var doc = this.element.ownerDocument;
+            var channel = this.$props.cloudChannel ? this.$props.cloudChannel : '5';
+            var apiKey = this.$props.apiKey ? this.$props.apiKey : 'no-api-key';
+            _ScriptLoader__WEBPACK_IMPORTED_MODULE_0__["load"](scriptState, doc, "https://cdn.tiny.cloud/1/" + apiKey + "/tinymce/" + channel + "/tinymce.min.js", initialise(this));
+        }
+    },
+    beforeDestroy: function () {
+        if (Object(_TinyMCE__WEBPACK_IMPORTED_MODULE_1__["getTinymce"])() !== null) {
+            Object(_TinyMCE__WEBPACK_IMPORTED_MODULE_1__["getTinymce"])().remove(this.editor);
+        }
+    },
+    render: function (h) {
+        return this.inlineEditor ? renderInline(h, this.elementId, this.$props.tagName) : renderIframe(h, this.elementId);
+    }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/EditorPropTypes.js ***!
+  \********************************************************************************************/
+/*! exports provided: editorProps */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "editorProps", function() { return editorProps; });
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+var editorProps = {
+    apiKey: String,
+    cloudChannel: String,
+    id: String,
+    init: Object,
+    initialValue: String,
+    inline: Boolean,
+    modelEvents: [String, Array],
+    plugins: [String, Array],
+    tagName: String,
+    toolbar: [String, Array],
+    value: String,
+    disabled: Boolean
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Editor */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/components/Editor.js");
+/**
+ * Copyright (c) 2018-present, Ephox, Inc.
+ *
+ * This source code is licensed under the Apache 2 license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (_components_Editor__WEBPACK_IMPORTED_MODULE_0__["Editor"]);
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -113,7 +503,6 @@ var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
 var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./node_modules/axios/lib/helpers/isURLSameOrigin.js");
 var createError = __webpack_require__(/*! ../core/createError */ "./node_modules/axios/lib/core/createError.js");
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ "./node_modules/axios/lib/helpers/btoa.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -125,22 +514,6 @@ module.exports = function xhrAdapter(config) {
     }
 
     var request = new XMLHttpRequest();
-    var loadEvent = 'onreadystatechange';
-    var xDomain = false;
-
-    // For IE 8/9 CORS support
-    // Only supports POST and GET calls and doesn't returns the response headers.
-    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ( true &&
-        typeof window !== 'undefined' &&
-        window.XDomainRequest && !('withCredentials' in request) &&
-        !isURLSameOrigin(config.url)) {
-      request = new window.XDomainRequest();
-      loadEvent = 'onload';
-      xDomain = true;
-      request.onprogress = function handleProgress() {};
-      request.ontimeout = function handleTimeout() {};
-    }
 
     // HTTP basic authentication
     if (config.auth) {
@@ -155,8 +528,8 @@ module.exports = function xhrAdapter(config) {
     request.timeout = config.timeout;
 
     // Listen for ready state
-    request[loadEvent] = function handleLoad() {
-      if (!request || (request.readyState !== 4 && !xDomain)) {
+    request.onreadystatechange = function handleLoad() {
+      if (!request || request.readyState !== 4) {
         return;
       }
 
@@ -173,9 +546,8 @@ module.exports = function xhrAdapter(config) {
       var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
       var response = {
         data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/axios/axios/issues/201)
-        status: request.status === 1223 ? 204 : request.status,
-        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+        status: request.status,
+        statusText: request.statusText,
         headers: responseHeaders,
         config: config,
         request: request
@@ -984,54 +1356,6 @@ module.exports = function bind(fn, thisArg) {
     return fn.apply(thisArg, args);
   };
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/axios/lib/helpers/btoa.js":
-/*!************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/btoa.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
 
 
 /***/ }),
@@ -2084,12 +2408,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'post-show',
   data: function data() {
-    return {};
+    return {
+      compiledContent: ''
+    };
   },
   created: function created() {
     this.fetch();
@@ -17523,7 +17847,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -17534,7 +17858,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.15';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -20193,16 +20517,10 @@ return jQuery;
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -21126,8 +21444,8 @@ return jQuery;
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -22944,7 +23262,7 @@ return jQuery;
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -24127,7 +24445,7 @@ return jQuery;
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -24135,6 +24453,10 @@ return jQuery;
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -27935,6 +28257,7 @@ return jQuery;
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -32321,9 +32644,12 @@ return jQuery;
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -32356,7 +32682,9 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -34561,10 +34889,11 @@ return jQuery;
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -37880,33 +38209,29 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-            _vm._v("Example textarea")
-          ]),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+              _vm._v("Example textarea")
+            ]),
+            _vm._v(" "),
+            _c("tinyMce", {
+              attrs: {
+                "api-key": "vtusjnetekeyyvky2v0cq1rhddmgwimlni7huhg1doec653f"
+              },
+              model: {
                 value: _vm.content,
+                callback: function($$v) {
+                  _vm.content = $$v
+                },
                 expression: "content"
               }
-            ],
-            staticClass: "form-control",
-            attrs: { id: "exampleFormControlTextarea1", rows: "6" },
-            domProps: { value: _vm.content },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.content = $event.target.value
-              }
-            }
-          })
-        ])
+            })
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -38046,31 +38371,27 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "" } }, [_vm._v("Example textarea")]),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "" } }, [_vm._v("Example textarea")]),
+            _vm._v(" "),
+            _c("tinyMce", {
+              attrs: {
+                "api-key": "vtusjnetekeyyvky2v0cq1rhddmgwimlni7huhg1doec653f"
+              },
+              model: {
                 value: _vm.content,
+                callback: function($$v) {
+                  _vm.content = $$v
+                },
                 expression: "content"
               }
-            ],
-            staticClass: "form-control",
-            attrs: { id: "", rows: "6" },
-            domProps: { value: _vm.content },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.content = $event.target.value
-              }
-            }
-          })
-        ])
+            })
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -38215,11 +38536,7 @@ var render = function() {
     _c("ul", { staticClass: "list-unstyled" }, [
       _c("li", { staticClass: "media" }, [
         _c("div", { staticClass: "media-body" }, [
-          _c("p", [
-            _vm._v(
-              "\n              " + _vm._s(_vm.post.content) + "\n            "
-            )
-          ])
+          _c("div", { domProps: { innerHTML: _vm._s(_vm.post.content) } })
         ])
       ])
     ]),
@@ -54550,9 +54867,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
-/* harmony import */ var _components_MainContent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/MainContent.vue */ "./resources/js/components/MainContent.vue");
+/* harmony import */ var _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tinymce/tinymce-vue */ "./node_modules/@tinymce/tinymce-vue/lib/es2015/main/ts/index.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+/* harmony import */ var _components_MainContent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/MainContent.vue */ "./resources/js/components/MainContent.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -54566,11 +54884,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('tinyMce', _tinymce_tinymce_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_5__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  routes: _routes__WEBPACK_IMPORTED_MODULE_3__["routes"],
+  routes: _routes__WEBPACK_IMPORTED_MODULE_4__["routes"],
   mode: 'history'
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -54578,7 +54898,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: router,
   store: store,
   components: {
-    MainContent: _components_MainContent_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    MainContent: _components_MainContent_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 
