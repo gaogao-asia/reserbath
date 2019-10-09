@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@tinymce/tinymce-vue": "^3.0.1",
         "eslint-config-vue": "^2.0.2",
         "eslint-plugin-vue": "^5.0.0-beta.6",
         "vue-router": "^3.0.6",
