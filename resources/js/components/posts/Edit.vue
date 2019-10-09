@@ -11,7 +11,7 @@
 
         <form>
           <div class="form-group form-check">
-            <label for="exampleFormControlInput1">Category</label>
+            <label for="">Category</label>
             <select
               v-model="category_id"
               class="form-control">
@@ -25,12 +25,12 @@
               </template>
             </select>
             <div class="form-group">
-              <label for="exampleFormControlInput1">Name</label>
-              <input v-model="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Document Name">
+              <label for="">Name</label>
+              <input v-model="name" type="text" class="form-control" id="" placeholder="Document Name">
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea v-model="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+              <label for="">Example textarea</label>
+              <textarea v-model="content" class="form-control" id="" rows="6"></textarea>
             </div>
           </div>
           <button
@@ -55,7 +55,9 @@ export default {
   },
 
   created() {
-    this.fetch()
+    this.fetchCategories()
+    this.fetchPost()
+    this.setPost()
   },
 
   computed: {
@@ -64,22 +66,22 @@ export default {
     },
     categories() {
       return this.$store.getters.categories
-    },
-    post() {
+    }
+  },
+
+  methods: {
+     setPost() {
       let post
       post             = this.$store.getters.post
       this.id          = post.id
       this.name        = post.name
       this.content     = post.content
       this.category_id = post.category.id
-      return post
-    }
-
-  },
-
-  methods: {
-    fetch () {
+    },
+    fetchCategories () {
       this.$store.dispatch('getCategories')
+    },
+    fetchPost () {
       this.$store.dispatch('getPost', {postId: this.$route.params.id})
     },
     putPost () {

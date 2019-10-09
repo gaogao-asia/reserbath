@@ -1943,7 +1943,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.fetch();
+    this.fetchCategories();
+    this.fetchPost();
+    this.setPost();
   },
   computed: {
     currentUser: function currentUser() {
@@ -1951,20 +1953,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     categories: function categories() {
       return this.$store.getters.categories;
-    },
-    post: function post() {
+    }
+  },
+  methods: {
+    setPost: function setPost() {
       var post;
       post = this.$store.getters.post;
       this.id = post.id;
       this.name = post.name;
       this.content = post.content;
       this.category_id = post.category.id;
-      return post;
-    }
-  },
-  methods: {
-    fetch: function fetch() {
+    },
+    fetchCategories: function fetchCategories() {
       this.$store.dispatch('getCategories');
+    },
+    fetchPost: function fetchPost() {
       this.$store.dispatch('getPost', {
         postId: this.$route.params.id
       });
@@ -37967,9 +37970,7 @@ var render = function() {
     _vm._v(" "),
     _c("form", [
       _c("div", { staticClass: "form-group form-check" }, [
-        _c("label", { attrs: { for: "exampleFormControlInput1" } }, [
-          _vm._v("Category")
-        ]),
+        _c("label", { attrs: { for: "" } }, [_vm._v("Category")]),
         _vm._v(" "),
         _c(
           "select",
@@ -38020,9 +38021,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "exampleFormControlInput1" } }, [
-            _vm._v("Name")
-          ]),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Name")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -38034,11 +38033,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "exampleFormControlInput1",
-              placeholder: "Document Name"
-            },
+            attrs: { type: "text", id: "", placeholder: "Document Name" },
             domProps: { value: _vm.name },
             on: {
               input: function($event) {
@@ -38052,9 +38047,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-            _vm._v("Example textarea")
-          ]),
+          _c("label", { attrs: { for: "" } }, [_vm._v("Example textarea")]),
           _vm._v(" "),
           _c("textarea", {
             directives: [
@@ -38066,7 +38059,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { id: "exampleFormControlTextarea1", rows: "6" },
+            attrs: { id: "", rows: "6" },
             domProps: { value: _vm.content },
             on: {
               input: function($event) {
