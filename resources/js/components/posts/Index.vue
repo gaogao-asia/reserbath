@@ -3,9 +3,18 @@
         <div>
             <h3>House Document一覧</h3>
             <p class="text-right">
+             <!--  <v-btn dark="true" rounded="true" small="true" colors="#42A5F5">
                 <router-link
                   to="/posts/create"
-                  class="pull-right btn btn-primary btn-sm active">新規Document追加</router-link>
+                  class="pull-right">新規Document追加</router-link>
+              </v-btn> -->
+              <primaryBtn>
+                <router-link
+                  to="/posts/create"
+                  class="pull-right">
+                  新規Document追加
+                </router-link>
+              </primaryBtn>
             </p>
         </div>
 

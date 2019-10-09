@@ -17,13 +17,32 @@ import {routes} from './routes'
 import StoreData from './store'
 import MainContent from './components/MainContent.vue';
 
+// Vuetify
+import Vuetify from 'vuetify'
+import colors from 'vuetify/es5/util/colors'
+
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.indigo.base,
+    secondary: colors.blue.base,
+    accent: colors.amber.base,
+  }
+});
+import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
 Vue.component('tinyMce', TinyMce)
 
-const store = new Vuex.Store(StoreData)
+/* ============================================================================
+ * Atoms
+ * ========================================================================= */
+ Vue.component('primaryBtn', require('./Atoms/Button/primaryBtn.vue').default)
 
+
+const store = new Vuex.Store(StoreData)
 const router = new VueRouter({
   routes,
   mode: 'history'
