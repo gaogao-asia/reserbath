@@ -1,13 +1,10 @@
 <template>
     <div>
-        <div>
-            <h3>Documentの追加</h3>
-            <p class="text-right">
-              <router-link
-                to="/posts"
-                class="pull-right btn btn-secondary btn-sm active">Document一覧に戻る</router-link>
-            </p>
-        </div>
+        <cardTop
+        :title="'Documentの追加'"
+        :btnTitle="'Document一覧に戻る'"
+        :btnLink="'/posts/'">
+        </cardTop>
 
         <form>
           <div class="form-group form-check">
@@ -33,10 +30,7 @@
               <tinyMce api-key="vtusjnetekeyyvky2v0cq1rhddmgwimlni7huhg1doec653f" v-model="content"></tinyMce>
             </div>
           </div>
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="postPost()">Submit</button>
+          <primaryBtn @click="postPost()">submit</primaryBtn>
         </form>
     </div>
 </template>

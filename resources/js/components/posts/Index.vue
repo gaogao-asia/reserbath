@@ -1,39 +1,35 @@
-<template>
+<!-- <template>
     <div>
-        <div>
-            <h3>House Document一覧</h3>
-            <p class="text-right">
-             <!--  <v-btn dark="true" rounded="true" small="true" colors="#42A5F5">
-                <router-link
-                  to="/posts/create"
-                  class="pull-right">新規Document追加</router-link>
-              </v-btn> -->
-              <primaryBtn>
-                <router-link
-                  to="/posts/create"
-                  class="pull-right">
-                  新規Document追加
-                </router-link>
-              </primaryBtn>
-            </p>
-        </div>
+      <cardTop
+      :title="'House Document一覧'"
+      :btnTitle="'新規Document追加'"
+      :btnLink="'/posts/create'">
+      </cardTop>
 
-        <ul class="list-unstyled">
-
-          <li class="media" v-for="category in categories">
-            <div class="media-body">
-              <h5 class="mt-0 mb-1">{{ category.name }}</h5>
-              <template class="media" v-for="post in category.posts">
-                <p>
-                  <router-link
-                  :to="`/posts/${post.id}`"
-                  class="">{{ post.name }}</router-link>
-                </p>
-              </template>
-            </div>
-          </li>
-        </ul>
+      <ul class="list-unstyled">
+        <li class="media" v-for="category in categories">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ category.name }}</h5>
+            <template class="media" v-for="post in category.posts">
+              <p>
+                <router-link
+                :to="`/posts/${post.id}`"
+                class="">{{ post.name }}</router-link>
+              </p>
+            </template>
+          </div>
+        </li>
+      </ul>
     </div>
+</template> -->
+<template>
+  <div>
+    <b-tabs content-class="mt-3">
+      <b-tab title="First" active><p>I'm the first tab</p></b-tab>
+      <b-tab title="Second"><p>I'm the second tab</p></b-tab>
+      <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
+    </b-tabs>
+  </div>
 </template>
 
 <script>
