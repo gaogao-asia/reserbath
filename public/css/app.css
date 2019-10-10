@@ -511,7 +511,7 @@ mark,
 }
 
 .blockquote-footer::before {
-  content: "\2014\A0";
+  content: "— ";
 }
 
 .img-fluid {
@@ -10948,7 +10948,7 @@ a.m-btn {
 
 .fa-location::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F3C5";
+  content: "";
   font-weight: 600;
   color: #666666;
 }
@@ -10959,155 +10959,155 @@ a.m-btn {
 
 .fa-clock::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F017";
+  content: "";
   font-weight: 600;
 }
 
 .fa-credit-card::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F09D";
+  content: "";
   font-weight: 600;
 }
 
 .fa-sleep::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F236";
+  content: "";
   font-weight: 600;
 }
 
 .fa-train::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F238";
+  content: "";
   font-weight: 600;
 }
 
 .fa-eat::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F2E7";
+  content: "";
   font-weight: 600;
 }
 
 .fa-restaurant::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F54E";
+  content: "";
   font-weight: 600;
 }
 
 .fa-lunch::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F185";
+  content: "";
   font-weight: 600;
 }
 
 .fa-dinner::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F186";
+  content: "";
   font-weight: 600;
 }
 
 .fa-star-yellow::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F005";
+  content: "";
   font-weight: 600;
   color: #FFD20B;
 }
 
 .fa-star-gray::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F005";
+  content: "";
   font-weight: 600;
   color: #DEDEDE;
 }
 
 .fa-heart-red::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F004";
+  content: "";
   font-weight: 600;
   color: #ff9393;
 }
 
 .fa-heart-gray::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F004";
+  content: "";
   font-weight: 600;
   color: #DEDEDE;
 }
 
 .fa-yen::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F157";
+  content: "";
   font-weight: 600;
 }
 
 .fa-key::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F084";
+  content: "";
   font-weight: 600;
 }
 
 .fa-signout::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F2F5";
+  content: "";
   font-weight: 600;
 }
 
 .fa-search::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F002";
+  content: "";
   font-weight: 600;
 }
 
 .fa-question::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F059";
+  content: "";
   font-weight: 600;
 }
 
 .fa-map::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F3C5";
+  content: "";
   font-weight: 600;
 }
 
 .fa-friends::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F500";
+  content: "";
   font-weight: 600;
 }
 
 .fa-wink::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F4DA";
+  content: "";
   font-weight: 600;
 }
 
 .fa-twitter::before {
   font-family: "Font Awesome 5 Brands";
-  content: "\F099";
+  content: "";
   font-weight: 600;
 }
 
 .fa-facebook::before {
   font-family: "Font Awesome 5 Brands";
-  content: "\F39E";
+  content: "";
   font-weight: 600;
 }
 
 .fa-lightbulb::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F0EB";
+  content: "";
   font-weight: 600;
 }
 
 .fa-thumbs-up::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F164";
+  content: "";
   font-weight: 600;
 }
 
 .fa-crown::before {
   font-family: "Font Awesome 5 Free";
-  content: "\F521";
+  content: "";
   font-weight: 600;
 }
 
@@ -11121,6 +11121,28 @@ a.m-btn {
 
 .fa-crown[ranking="3"] {
   color: #E4B18D;
+}
+
+/* ----------------------------------------------------------------------------
+ * select
+ * ------------------------------------------------------------------------- */
+
+.m-select {
+  background: url(/images/icon_arrow_down.svg) no-repeat right 16px center/12px auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #666;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+  cursor: pointer;
+  text-align: center;
+  min-width: 152px;
+  padding: 4px 8px;
+  background-color: #fff;
 }
 
 .navbar-laravel {
