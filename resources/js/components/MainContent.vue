@@ -1,10 +1,19 @@
 <template>
-    <router-view></router-view>
+    <v-card>
+      <router-view>
+      </router-view>
+    </v-card>
 </template>
 
 <script>
-    export default {
-      created () {
-      }
+  export default {
+    created () {
     }
+  }
 </script>
+<style lang="scss" scoped>
+.v-card {
+  padding: 16px;
+  min-height: 350px;
+}
+</style>

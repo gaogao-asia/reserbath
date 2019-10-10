@@ -1,29 +1,24 @@
 <template>
     <div>
-        <div>
-            <h3>House Document一覧</h3>
-            <p class="text-right">
-                <router-link
-                  to="/posts/create"
-                  class="pull-right btn btn-primary btn-sm active">新規Document追加</router-link>
-            </p>
-        </div>
+      <cardTop
+      :title="'House Document一覧'"
+      :btnTitle="'新規Document追加'"
+      :btnLink="'/posts/create'">
+      </cardTop>
 
-        <ul class="list-unstyled">
-
-          <li class="media" v-for="category in categories">
-            <div class="media-body">
-              <h5 class="mt-0 mb-1">{{ category.name }}</h5>
-              <template class="media" v-for="post in category.posts">
+      <b-tabs content-class="mt-3">
+        <template v-for="category in categories">
+            <b-tab :title="category.name" active>
+              <template v-for="post in category.posts">
                 <p>
                   <router-link
                   :to="`/posts/${post.id}`"
                   class="">{{ post.name }}</router-link>
                 </p>
               </template>
-            </div>
-          </li>
-        </ul>
+            </b-tab>
+        </template>
+      </b-tabs>
     </div>
 </template>
 

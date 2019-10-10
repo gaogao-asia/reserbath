@@ -1,20 +1,16 @@
 <template>
     <div>
-        <div>
-            <h3>Documentの追加</h3>
-            <p class="text-right">
-              <router-link
-                to="/posts"
-                class="pull-right btn btn-secondary btn-sm active">Document一覧に戻る</router-link>
-            </p>
-        </div>
+        <cardTop
+        :title="'Documentの編集'"
+        :btnTitle="'Document一覧に戻る'"
+        :btnLink="'/posts/'">
+        </cardTop>
 
         <form>
           <div class="form-group form-check">
-            <label for="exampleFormControlInput1">Category</label>
             <select
               v-model="category_id"
-              class="form-control">
+              class="form-control m-select">
               <option disabled value="">Please select one</option>
               <template
                 v-for="(category, index) in categories">
@@ -25,18 +21,16 @@
               </template>
             </select>
             <div class="form-group">
-              <label for="exampleFormControlInput1">Name</label>
-              <input v-model="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Document Name">
+              <v-text-field
+                v-model="name"
+                hint="Document Name"
+              ></v-text-field>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
-              <textarea v-model="content" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+              <tinyMce api-key="vtusjnetekeyyvky2v0cq1rhddmgwimlni7huhg1doec653f" v-model="content"></tinyMce>
             </div>
           </div>
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="putPost()">Submit</button>
+          <primaryBtn @click="putPost()">submit</primaryBtn>
         </form>
     </div>
 </template>
@@ -55,7 +49,9 @@ export default {
   },
 
   created() {
-    this.fetch()
+    this.fetchCategories()
+    this.fetchPost()
+    this.setPost()
   },
 
   computed: {
@@ -66,20 +62,24 @@ export default {
       return this.$store.getters.categories
     },
     post() {
+      return this.$store.getters.post
+    }
+  },
+
+  methods: {
+     setPost() {
       let post
       post             = this.$store.getters.post
+      console.log(post)
       this.id          = post.id
       this.name        = post.name
       this.content     = post.content
       this.category_id = post.category.id
-      return post
-    }
-
-  },
-
-  methods: {
-    fetch () {
+    },
+    fetchCategories () {
       this.$store.dispatch('getCategories')
+    },
+    fetchPost () {
       this.$store.dispatch('getPost', {postId: this.$route.params.id})
     },
     putPost () {
