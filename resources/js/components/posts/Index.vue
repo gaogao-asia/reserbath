@@ -3,7 +3,8 @@
       <cardTop
       :title="'House Document一覧'"
       :btnTitle="'新規Document追加'"
-      :btnLink="'/posts/create'">
+      :btnLink="'/posts/create'"
+      :btnType="'primary'">
       </cardTop>
 
       <b-tabs content-class="mt-3">
@@ -12,8 +13,7 @@
               <template v-for="post in category.posts">
                 <p>
                   <router-link
-                  :to="`/posts/${post.id}`"
-                  class="">{{ post.name }}</router-link>
+                  :to="`/posts/${post.id}`">{{ post.name }}</router-link>
                 </p>
               </template>
             </b-tab>

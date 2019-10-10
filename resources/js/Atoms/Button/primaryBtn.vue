@@ -2,7 +2,7 @@
    <v-btn
     :rounded="rounded"
     :small="small"
-    :colors="colors"
+    :color="color"
     @click="onClick">
     <slot />
   </v-btn>
@@ -15,10 +15,11 @@ export default {
     return {
       rounded: true,
       small: true,
-      colors: "42A5F5"
+      color: "primary"
     }
   },
   created () {
+    console.log(1)
   },
 
   methods: {
@@ -29,5 +30,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.v-btn {
+  background-color: #1867c0 !important;
+  border-color: #1867c0 !important;
+}
 </style>

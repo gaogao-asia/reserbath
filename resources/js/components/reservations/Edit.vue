@@ -1,13 +1,11 @@
 <template>
     <div>
-        <div>
-            <h3>予約の編集</h3>
-            <p class="text-right">
-              <router-link
-                to="/"
-                class="pull-right btn btn-secondary btn-sm active">予約一覧に戻る</router-link>
-            </p>
-        </div>
+        <cardTop
+        :title="'予約の編集'"
+        :btnTitle="'予約一覧に戻る'"
+        :btnType="'secondary'"
+        :btnLink="'/'">
+        </cardTop>
 
         <form>
           <div class="form-group form-check">
@@ -24,10 +22,7 @@
               </template>
             </select>
           </div>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            @click="putReservation()">Submit</button>
+          <primaryBtn @click="putReservation()">submit</primaryBtn>
         </form>
     </div>
 </template>

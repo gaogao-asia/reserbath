@@ -3,7 +3,8 @@
         <cardTop
         :title="post.name"
         :btnTitle="'このDocumentを編集する'"
-        :btnLink="`/posts/${post.id}/edit`">
+        :btnLink="`/posts/${post.id}/edit`"
+        btnType="secondary">
         </cardTop>
 
         <ul class="list-unstyled">
@@ -15,10 +16,10 @@
           </li>
         </ul>
          <p class="text-left">
-            <primaryBtn>
+            <secondaryBtn>
               <router-link
-              to="/posts">Document一覧に戻る</router-link>
-            </primaryBtn>
+              to="/posts" class="router-link-secondary">Document一覧に戻る</router-link>
+            </secondaryBtn>
         </p>
     </div>
 </template>

@@ -3,6 +3,7 @@
         <cardTop
         :title="'Documentの追加'"
         :btnTitle="'Document一覧に戻る'"
+        :btnType="'secondary'"
         :btnLink="'/posts/'">
         </cardTop>
 
