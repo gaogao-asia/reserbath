@@ -1,11 +1,12 @@
 <template>
   <div>
       <div>
-          <h3 v-if="reservation.user">{{ reservation.user.name }}さんの予約</h3>
+          <v-card-title v-if="reservation.user">{{ reservation.user.name }}さんの予約</v-card-title>
           <p class="text-right">
-              <router-link
-                  to="/reservations/create"
-                  class="pull-right btn btn-primary btn-sm active">新規予約追加</router-link>
+              <primaryBtn>
+                <router-link
+                to="/reservations/create" class="router-link-primary">新規予約追加</router-link>
+              </primaryBtn>
           </p>
       </div>
 
@@ -36,9 +37,10 @@
           </tbody>
       </table>
       <p class="text-left">
-        <router-link
-          to="/"
-          class="pull-right btn btn-secondary btn-sm active">予約一覧に戻る</router-link>
+        <secondaryBtn>
+          <router-link
+          to="/" class="router-link-secondary">予約一覧に戻る</router-link>
+        </secondaryBtn>
       </p>
   </div>
 </template>

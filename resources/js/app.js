@@ -23,13 +23,8 @@ import BootstrapVue from 'bootstrap-vue'
 import Vuetify from 'vuetify'
 import colors from 'vuetify/es5/util/colors'
 
-Vue.use(Vuetify, {
-  theme: {
-    primary: colors.indigo.base,
-    secondary: colors.blue.base,
-    accent: colors.amber.base,
-  }
-});
+Vue.use(Vuetify)
+
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
@@ -45,6 +40,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
  * Atoms
  * ========================================================================= */
 Vue.component('primaryBtn', require('./Atoms/Button/primaryBtn.vue').default)
+Vue.component('secondaryBtn', require('./Atoms/Button/secondaryBtn.vue').default)
 
 /* ============================================================================
  * Molecules
