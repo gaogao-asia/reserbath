@@ -10,7 +10,7 @@ use App\Http\Requests\ReservationRequest;
 use App\Notifications\ReservationStore;
 use App\Notifications\ReservationUpdate;
 
-use App\Reservation;
+use App\Models\Reservation;
 
 /**
  * 風呂予約管理コントローラー

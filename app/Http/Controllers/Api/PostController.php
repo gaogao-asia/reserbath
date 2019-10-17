@@ -10,8 +10,8 @@ use App\Http\Requests\ReservationRequest;
 use App\Notifications\ReservationStore;
 use App\Notifications\ReservationUpdate;
 
-use App\Category;
-use App\Post;
+use App\Models\Category;
+use App\Models\Post;
 
 /**
  * House Documentコントローラー
