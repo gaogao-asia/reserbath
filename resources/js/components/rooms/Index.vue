@@ -9,38 +9,37 @@
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-6">
+          <template v-for="room in rooms">
+            <div class="col-6">
             <v-card
               class="mx-auto"
             >
               <v-img
                 class="white--text align-end"
                 height="200px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                :src="room.room_files[0].file.url"
               >
-                <!-- <v-card-title>Top 10 Australian beaches</v-card-title>
-                <v-card-sub-title>Top</v-card-sub-title> -->
                 <v-card-actions>
-                <v-list-item class="grow">
+                  <v-list-item class="grow">
 
-                  <v-list-item-content>
-                    <v-list-item-title>Evan You</v-list-item-title>
-                  </v-list-item-content>
+                    <v-list-item-content>
+                      <v-list-item-title>{{ room.name }}</v-list-item-title>
+                    </v-list-item-content>
 
-                  <v-row
-                    align="center"
-                    justify="end"
-                  >
-                    <v-icon class="">mdi-heart</v-icon>
-                    <span class="subheading mr-2">256</span>
-                  </v-row>
-                </v-list-item>
-              </v-card-actions>
+                    <v-row
+                      align="right"
+                      justify="end"
+                      class="v-row"
+                    >
+                      <v-icon>favorite</v-icon>
+                        <span class="subheading mr-2">{{ getTotalScore(room.room_scores) }}</span>
+                    </v-row>
+                  </v-list-item>
+                </v-card-actions>
               </v-img>
             </v-card>
-          </div>
-          <div class="col-6">
-          </div>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -52,6 +51,7 @@ export default {
 
   data () {
     return {
+      likes: 0,
     }
   },
 
@@ -64,16 +64,22 @@ export default {
       return this.$store.getters.currentUser
     },
 
-    categories() {
-      return this.$store.getters.categories
-    }
+    rooms() {
+      return this.$store.getters.rooms
+    },
 
   },
 
   methods: {
     fetch () {
-      this.$store.dispatch('getCategories')
+      this.$store.dispatch('getRooms')
     },
+
+    getTotalScore(room_scores) {
+      let totalScore = 0;
+      room_scores.map(score => totalScore += score.score)
+      return totalScore
+    }
 
   },
 }
@@ -84,6 +90,17 @@ export default {
   .v-list-item__title {
     color: #fff;
     font-size: 1rem;
+  }
+
+  .v-row {
+    flex: none;
+    .v-icon {
+      color: #F44336 !important;
+    }
+    span {
+      color: #fff;
+      font-weight: bolder;
+    }
   }
 }
 </style>

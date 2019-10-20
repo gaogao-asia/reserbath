@@ -70,7 +70,7 @@ export default {
      setPost() {
       let post
       post             = this.$store.getters.post
-      console.log(post)
+
       this.id          = post.id
       this.name        = post.name
       this.content     = post.content

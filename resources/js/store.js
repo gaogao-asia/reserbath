@@ -13,7 +13,8 @@ export default {
     timeOptions: [],
     posts: [],
     post: [],
-    categories: []
+    categories: [],
+    rooms: [],
   },
 
   getters: {
@@ -41,6 +42,9 @@ export default {
     timeOptions (state) {
       return state.timeOptions
     },
+    rooms (state) {
+      return state.rooms
+    },
   },
 
   mutations: {
@@ -64,6 +68,9 @@ export default {
     },
     updateTimeOptions (state, payload) {
       state.timeOptions = payload
+    },
+    updateRooms (state, payload) {
+      state.rooms = payload
     },
     // logout (state) {
     //   localStorage.removeItem('user')
@@ -174,6 +181,13 @@ export default {
         .get('/api/categories', {})
         .then((response) => {
           commit('updateCategories', response.data.categories || [])
+        })
+    },
+    getRooms ({ commit }) {
+      axios
+        .get('/api/rooms', {})
+        .then((response) => {
+          commit('updateRooms', response.data.rooms || [])
         })
     },
     // login ({ commit }) {

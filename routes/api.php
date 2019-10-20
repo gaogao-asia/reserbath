@@ -23,5 +23,6 @@ Route::domain($reserbath_domain)->group(function () {
         Route::resource('reservations', 'ReservationsController');
         Route::resource('posts', 'PostController');
         Route::resource('categories', 'CategoryController', ['only' => ['index']]);
+        Route::resource('rooms', 'RoomController');
     });
 });
