@@ -11,33 +11,36 @@
         <div class="row">
           <template v-for="room in rooms">
             <div class="col-6">
-            <v-card
-              class="mx-auto"
-            >
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                :src="room.room_files[0].file.url"
-              >
-                <v-card-actions>
-                  <v-list-item class="grow">
+              <router-link
+              :to="`/rooms/${room.id}`">
+                <v-card
+                  class="mx-auto"
+                >
+                  <v-img
+                    class="white--text align-end"
+                    height="200px"
+                    :src="room.room_files[0].file.url"
+                  >
+                    <v-card-actions>
+                      <v-list-item class="grow">
 
-                    <v-list-item-content>
-                      <v-list-item-title>{{ room.name }}</v-list-item-title>
-                    </v-list-item-content>
+                        <v-list-item-content>
+                          <v-list-item-title>{{ room.name }}</v-list-item-title>
+                        </v-list-item-content>
 
-                    <v-row
-                      align="right"
-                      justify="end"
-                      class="v-row"
-                    >
-                      <v-icon>favorite</v-icon>
-                        <span class="subheading mr-2">{{ getTotalScore(room.room_scores) }}</span>
-                    </v-row>
-                  </v-list-item>
-                </v-card-actions>
-              </v-img>
-            </v-card>
+                        <v-row
+                          align="right"
+                          justify="end"
+                          class="v-row"
+                        >
+                          <v-icon>favorite</v-icon>
+                            <span class="subheading mr-2">{{ getTotalScore(room.room_scores) }}</span>
+                        </v-row>
+                      </v-list-item>
+                    </v-card-actions>
+                  </v-img>
+                </v-card>
+              </router-link>
             </div>
           </template>
         </div>
@@ -47,7 +50,7 @@
 
 <script>
 export default {
-  name: 'post-index',
+  name: 'room-index',
 
   data () {
     return {
