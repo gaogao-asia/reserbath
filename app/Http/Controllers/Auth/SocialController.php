@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
 use Laravel\Socialite\Facades\Socialite;
-use App\User;
-use App\SocialProvider;
+use App\Models\User;
+use App\Models\SocialProvider;
 
 class SocialController extends Controller
 {

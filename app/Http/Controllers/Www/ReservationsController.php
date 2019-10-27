@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\ReserveTimeOptionService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Reservation;
+use App\Models\Reservation;
 
 /**
  * 風呂予約管理コントローラー

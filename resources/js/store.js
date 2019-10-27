@@ -13,7 +13,9 @@ export default {
     timeOptions: [],
     posts: [],
     post: [],
-    categories: []
+    categories: [],
+    rooms: [],
+    room: [],
   },
 
   getters: {
@@ -41,6 +43,12 @@ export default {
     timeOptions (state) {
       return state.timeOptions
     },
+    rooms (state) {
+      return state.rooms
+    },
+    room (state) {
+      return state.room
+    },
   },
 
   mutations: {
@@ -64,6 +72,13 @@ export default {
     },
     updateTimeOptions (state, payload) {
       state.timeOptions = payload
+    },
+    updateRooms (state, payload) {
+      state.rooms = payload
+    },
+
+    updateRoom (state, payload) {
+      state.room = payload
     },
     // logout (state) {
     //   localStorage.removeItem('user')
@@ -174,6 +189,34 @@ export default {
         .get('/api/categories', {})
         .then((response) => {
           commit('updateCategories', response.data.categories || [])
+        })
+    },
+    getRooms ({ commit }) {
+      axios
+        .get('/api/rooms', {})
+        .then((response) => {
+          commit('updateRooms', response.data.rooms || [])
+        })
+    },
+    getRoom ({ commit }, { roomId }) {
+      axios
+        .get(`/api/rooms/${roomId}`, {})
+        .then((response) => {
+          commit('updateRoom', response.data.room || [])
+        })
+    },
+    postRoom ({ commit }, { formData }) {
+      let config = {
+          headers: {
+              'content-type': 'multipart/form-data'
+          }
+      }
+      axios
+        .post(`/api/rooms`, formData, config)
+        .then((response) => {
+        })
+        .catch((err) => {
+          alert(err)
         })
     },
     // login ({ commit }) {

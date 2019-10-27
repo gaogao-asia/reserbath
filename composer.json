@@ -17,7 +17,8 @@
         "laravel/slack-notification-channel": "^2.0",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.8"
+        "laravelcollective/html": "^5.8",
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -39,7 +40,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Models\\": "app/Models/"
         },
         "classmap": [
             "database/seeds",

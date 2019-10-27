@@ -28,11 +28,19 @@ Vue.use(Vuetify)
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import mobile from 'is-mobile'
+// require swiper styles
+import 'swiper/dist/css/swiper.css'
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
 Vue.use(BootstrapVue)
 Vue.component('tinyMce', TinyMce)
+
+Vue.component('swiper', swiper)
+Vue.component('swiperSlide', swiperSlide)
 
 // import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -41,6 +49,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
  * ========================================================================= */
 Vue.component('primaryBtn', require('./Atoms/Button/primaryBtn.vue').default)
 Vue.component('secondaryBtn', require('./Atoms/Button/secondaryBtn.vue').default)
+Vue.component('image-upload', require('./Atoms/Input/imageUpload.vue').default)
 
 /* ============================================================================
  * Molecules
@@ -56,6 +65,10 @@ const router = new VueRouter({
 
 const app = new Vue({
   el: '#app',
+  data() {
+    return {
+    }
+  },
   router,
   store,
   components: {
