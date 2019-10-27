@@ -27,7 +27,7 @@
           <div class="col-12">
             <div class="text-right">
               <!-- https://vuetifyjs.com/ja/components/progress-linear -->
-              <v-container>
+              <!-- <v-container>
                 <div class="w-25 text-right" style="float: right;">
                   <div class="text-right mb-2">
                     <v-icon>thumb_up_alt</v-icon>1
@@ -44,7 +44,7 @@
                   >
                   </v-progress-linear>
                 </div>
-              </v-container>
+              </v-container> -->
             </div>
 
             <v-card-title>{{ room.name }}</v-card-title>

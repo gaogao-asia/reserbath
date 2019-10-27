@@ -19,7 +19,7 @@
                   <v-img
                     class="white--text align-end"
                     height="200px"
-                    :src="room.room_files[0].file.url"
+                    :src="getImage(room.room_files)"
                   >
                     <v-card-actions>
                       <v-list-item class="grow">
@@ -82,6 +82,13 @@ export default {
       let totalScore = 0;
       room_scores.map(score => totalScore += score.score)
       return totalScore
+    },
+    getImage(room_files) {
+      if (room_files[0]) {
+        return room_files[0].file.url
+      }
+
+      return 'https://sphere-app-production.s3-ap-northeast-1.amazonaws.com/sphere/img/photo/1571046297_EF86A256-7740-4A51-85B4-5C43A01C806D.jpeg'
     }
 
   },
