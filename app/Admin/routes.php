@@ -15,5 +15,5 @@ Route::group([
     $router->resource('reservations', ReservationController::class);
     $router->resource('categories', CategoryController::class);
     $router->resource('users', UserController::class);
-
+    $router->resource('rooms', RoomController::class);
 });
