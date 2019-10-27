@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Storage;
 
 class File extends Model
 {
@@ -17,4 +18,12 @@ class File extends Model
     ];
 
     // Relations
+
+    public function upload($image)
+    {
+        $path = Storage::disk('s3')->putFile('reserbath', $image, 'public');
+        $url = Storage::disk('s3')->url($path);
+
+        return $url;
+    }
 }

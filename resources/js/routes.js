@@ -13,6 +13,7 @@ import PostEdit from './components/posts/Edit.vue'
 
 import RoomIndex from './components/rooms/Index.vue'
 import RoomShow from './components/rooms/Show.vue'
+import RoomCreate from './components/rooms/Create.vue'
 
 export const routes = [
   {
@@ -61,6 +62,10 @@ export const routes = [
       {
         path: 'rooms',
         component: RoomIndex,
+      },
+      {
+        path: 'rooms/create',
+        component: RoomCreate,
       },
       {
         path: 'rooms/:id',

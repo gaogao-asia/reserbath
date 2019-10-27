@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Reservation;
+use App\Models\Reservation;
 use Carbon\Carbon;
 
 /**

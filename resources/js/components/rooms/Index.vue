@@ -2,8 +2,8 @@
     <div>
       <cardTop
       :title="'お部屋一覧'"
-      :btnTitle="'新規Document追加'"
-      :btnLink="'/posts/create'"
+      :btnTitle="'お部屋の写真を追加'"
+      :btnLink="'/rooms/create'"
       :btnType="'primary'">
       </cardTop>
 
@@ -88,6 +88,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
+
+img {
+  &:hover {
+    opacity: .8;
+  }
+}
+
 .v-card__actions {
   padding-top: 145px;
   .v-list-item__title {

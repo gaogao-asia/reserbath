@@ -49,6 +49,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
  * ========================================================================= */
 Vue.component('primaryBtn', require('./Atoms/Button/primaryBtn.vue').default)
 Vue.component('secondaryBtn', require('./Atoms/Button/secondaryBtn.vue').default)
+Vue.component('image-upload', require('./Atoms/Input/imageUpload.vue').default)
 
 /* ============================================================================
  * Molecules

@@ -205,6 +205,20 @@ export default {
           commit('updateRoom', response.data.room || [])
         })
     },
+    postRoom ({ commit }, { formData }) {
+      let config = {
+          headers: {
+              'content-type': 'multipart/form-data'
+          }
+      }
+      axios
+        .post(`/api/rooms`, formData, config)
+        .then((response) => {
+        })
+        .catch((err) => {
+          alert(err)
+        })
+    },
     // login ({ commit }) {
     //   axios
     //     .get('/auth/login/facebook', {})
