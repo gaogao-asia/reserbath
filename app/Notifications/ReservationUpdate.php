@@ -2,8 +2,8 @@
 
 namespace App\Notifications;
 
-use App\User;
-use App\Reservation;
+use App\Models\User;
+use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,7 +20,7 @@ class ReservationUpdate extends Notification
      * @return void
      */
     public function __construct(
-        \App\Reservation $reservation
+        \App\Models\Reservation $reservation
     )
     {
         $this->reservation = $reservation;
