@@ -24,6 +24,10 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
+    'slack' => [
+        'tokyo_house' => env('SLACK_NOTIFICATION_URL'),
+    ],
+
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
